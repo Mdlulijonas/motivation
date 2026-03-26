@@ -426,7 +426,7 @@
         <tr><td>20 Nov 2026</td><td>🎄 Year End Leadership Ceremony & Party</td><td>10:00 – 13:30</td><td>Party / Disney Character outfit</td><td>Motivation for Life Campus</td><td>R200</td></tr>
         <tr><td>13 Mar 2026</td><td>🌱 Parent-Child Leadership Workshop</td><td>09:00 – 11:30</td><td>Comfortable active wear</td><td>ECD Gym & Playroom</td><td>Free</td></tr>
       </tbody>
-     </table>
+    </table>
   </div>
 </section>
 
@@ -438,14 +438,38 @@
     <h3 style="text-align:center;"><i class="fas fa-child"></i> Admission & Payment Receipt Upload</h3>
     <form id="registrationForm" enctype="multipart/form-data">
       <div class="form-grid">
-        <div class="form-field"><label>🧸 Child's Full Name *</label><input type="text" id="childName" required placeholder="e.g., Lily Johnson"></div>
-        <div class="form-field"><label>📅 Child's Date of Birth</label><input type="date" id="childDob"></div>
-        <div class="form-field"><label>👩 Parent/Guardian Name *</label><input type="text" id="parentName" required></div>
-        <div class="form-field"><label>📧 Email Address *</label><input type="email" id="emailReg" required placeholder="motivationforlife581@gmail.com"></div>
-        <div class="form-field"><label>📞 Phone Number</label><input type="tel" id="phoneReg"></div>
-        <div class="form-field"><label>🏠 Address</label><textarea rows="2" id="address" placeholder="Winterveld, via Paving Road, Pretoria"></textarea></div>
-        <div class="form-field full-width"><label>💳 Upload Payment Receipt (Proof of Deposit) *</label><input type="file" id="receiptUpload" accept="image/*,.pdf,.jpg,.png"></div>
-        <div class="form-field full-width"><label>📝 Additional Notes</label><textarea rows="2" id="notes" placeholder="Stationery preference or special requirements"></textarea></div>
+        <div class="form-field">
+          <label for="childName">🧸 Child's Full Name *</label>
+          <input type="text" id="childName" name="childName" required placeholder="e.g., Lily Johnson" autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="childDob">📅 Child's Date of Birth</label>
+          <input type="date" id="childDob" name="childDob" autocomplete="bday">
+        </div>
+        <div class="form-field">
+          <label for="parentName">👩 Parent/Guardian Name *</label>
+          <input type="text" id="parentName" name="parentName" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="emailReg">📧 Email Address *</label>
+          <input type="email" id="emailReg" name="emailReg" required placeholder="motivationforlife581@gmail.com" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="phoneReg">📞 Phone Number</label>
+          <input type="tel" id="phoneReg" name="phoneReg" autocomplete="tel">
+        </div>
+        <div class="form-field">
+          <label for="address">🏠 Address</label>
+          <textarea rows="2" id="address" name="address" placeholder="Winterveld, via Paving Road, Pretoria" autocomplete="street-address"></textarea>
+        </div>
+        <div class="form-field full-width">
+          <label for="receiptUpload">💳 Upload Payment Receipt (Proof of Deposit) *</label>
+          <input type="file" id="receiptUpload" name="receiptUpload" accept="image/*,.pdf,.jpg,.png" required>
+        </div>
+        <div class="form-field full-width">
+          <label for="notes">📝 Additional Notes</label>
+          <textarea rows="2" id="notes" name="notes" placeholder="Stationery preference or special requirements"></textarea>
+        </div>
       </div>
       <div class="bank-details">
         <i class="fas fa-university"></i> <strong>Bank Account Details for Registration Fee / Tuition</strong><br>
