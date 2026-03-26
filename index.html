@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Motivation for Life ECD | Developing Future Leaders</title>
-  <!-- Google Fonts + Font Awesome + AOS + GSAP + p5.js (all from reliable CDNs) -->
+  <!-- Google Fonts + Font Awesome + AOS + GSAP + p5.js (all with fallbacks) -->
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -20,12 +20,10 @@
       color: #2c1a0e;
       overflow-x: hidden;
     }
-    /* Bright Colors */
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: #ffddb0; border-radius: 20px; }
     ::-webkit-scrollbar-thumb { background: #ff914d; border-radius: 20px; }
 
-    /* Navbar */
     .navbar {
       background: rgba(255, 245, 225, 0.98);
       backdrop-filter: blur(12px);
@@ -95,7 +93,6 @@
     }
     .btn-cartoon:active { transform: translateY(4px); box-shadow: 0 4px 0 #b45f1b; }
 
-    /* Hero */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -164,7 +161,6 @@
       color: #9B2E1F;
     }
 
-    /* Cartoon Canvas Section */
     .cartoon-canvas-container {
       background: #FFEAA7;
       border-radius: 70px;
@@ -184,7 +180,6 @@
       max-width: 800px;
     }
 
-    /* Fee Cards */
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -247,7 +242,6 @@
       margin-top: 1rem;
     }
 
-    /* Event Table */
     .event-table-wrapper {
       overflow-x: auto;
       background: #fff7e8;
@@ -271,7 +265,6 @@
       font-size: 1.2rem;
     }
 
-    /* Form */
     .form-card {
       background: #fff2e2;
       border-radius: 60px;
@@ -342,16 +335,14 @@
   </ul>
 </nav>
 
-<!-- Hero Section -->
 <section id="home" class="hero">
   <div class="hero-media" data-aos="fade-right">
     <div class="video-box">
-      <!-- Reliable kids cartoon video: Disney Junior official clip (safe embed) -->
+      <!-- Working kids cartoon video (official Disney Junior clip) -->
       <iframe src="https://www.youtube.com/embed/6lFj1H8J2yY?autoplay=0" title="Cartoon Video" allowfullscreen></iframe>
       <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> 🎬 Fun Cartoon Adventures – Sparking Imagination</p>
     </div>
     <div class="disney3d-box" data-aos="flip-up">
-      <!-- Stable Disney image from Pixabay CDN (no fallback needed) -->
       <img src="https://cdn.pixabay.com/photo/2019/05/17/09/27/mickey-mouse-4209781_1280.png" alt="3D Disney Magic">
       <p><i class="fas fa-magic"></i> 3D Disney Wonder ✨</p>
     </div>
@@ -364,13 +355,11 @@
   </div>
 </section>
 
-<!-- Cartoon Drawing Section using p5.js -->
 <div class="cartoon-canvas-container" data-aos="zoom-in">
   <h2 style="font-size: 2rem; margin-bottom: 1rem;">🎨 Our Happy Cartoon World 🎨</h2>
   <div id="cartoon-sketch"></div>
 </div>
 
-<!-- Fee Structure Section -->
 <section id="fees" class="container">
   <div class="title-wrap">
     <h2 class="section-title" style="background:#FFB7C5;">💰 Fee Structure 2026</h2>
@@ -421,7 +410,6 @@
   <p style="text-align:center; background:#FFD966; border-radius: 40px; padding: 10px; margin-top:1rem;"><i class="fas fa-info-circle"></i> All fees include nutritious snacks & learning materials. Stationery packs are optional but recommended.</p>
 </section>
 
-<!-- Event Table -->
 <section id="events" class="container">
   <div class="title-wrap">
     <h2 class="section-title" style="background:#C5A3FF;">📅 2026 Leadership Events Calendar</h2>
@@ -438,11 +426,10 @@
         <tr><td>20 Nov 2026</td><td>🎄 Year End Leadership Ceremony & Party</td><td>10:00 – 13:30</td><td>Party / Disney Character outfit</td><td>Motivation for Life Campus</td><td>R200</td></tr>
         <tr><td>13 Mar 2026</td><td>🌱 Parent-Child Leadership Workshop</td><td>09:00 – 11:30</td><td>Comfortable active wear</td><td>ECD Gym & Playroom</td><td>Free</td></tr>
       </tbody>
-    </table>
+     </table>
   </div>
 </section>
 
-<!-- Registration Form + Receipt Upload -->
 <section id="register" class="container">
   <div class="title-wrap">
     <h2 class="section-title" style="background:#FF6B6B; color:white;">📝 Register Your Future Leader</h2>
@@ -477,7 +464,6 @@
   </div>
 </section>
 
-<!-- Contact Info with updated location -->
 <section id="contact" class="container">
   <div class="title-wrap">
     <h2 class="section-title" style="background:#FFD966;">📞 Get in Touch</h2>
@@ -508,120 +494,126 @@
   <p>📧 motivationforlife581@gmail.com | 📞 +27 81 234 5678 | 📍 Winterveld, via Paving Road, Pretoria</p>
 </footer>
 
-<!-- Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script>
-  // Wait for DOM and all libraries to load
-  window.addEventListener('DOMContentLoaded', () => {
+  // Ensure all scripts are loaded and DOM is ready
+  window.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
     AOS.init({ duration: 800, once: true, offset: 100 });
+
+    // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // p5.js cartoon drawing
-    function sketch(p) {
-      p.setup = function() {
-        let canvas = p.createCanvas(800, 400);
-        canvas.parent('cartoon-sketch');
-        p.frameRate(30);
-      };
-      p.draw = function() {
-        p.background(255, 250, 210);
-        // Sun
-        p.fill(255, 200, 100);
-        p.noStroke();
-        p.circle(700, 70, 80);
-        p.fill(255, 180, 50);
-        p.circle(700, 70, 60);
-        p.stroke(255, 180, 50);
-        p.strokeWeight(4);
-        for (let i = 0; i < 12; i++) {
-          let angle = p.radians(i * 30);
-          let x1 = 700 + p.cos(angle) * 45;
-          let y1 = 70 + p.sin(angle) * 45;
-          let x2 = 700 + p.cos(angle) * 70;
-          let y2 = 70 + p.sin(angle) * 70;
-          p.line(x1, y1, x2, y2);
-        }
-        // Clouds
-        p.fill(255);
-        p.ellipse(100, 50, 70, 50);
-        p.ellipse(130, 40, 60, 50);
-        p.ellipse(70, 60, 60, 50);
-        p.ellipse(600, 40, 80, 60);
-        
-        // Child reading
-        p.fill(255, 220, 180);
-        p.ellipse(120, 280, 40, 50);
-        p.fill(0);
-        p.ellipse(110, 270, 5, 8);
-        p.ellipse(130, 270, 5, 8);
-        p.arc(120, 285, 20, 15, 0, p.PI);
-        p.fill(200, 100, 50);
-        p.rect(100, 295, 40, 20);
-        p.fill(255);
-        p.rect(102, 297, 36, 16);
-        p.fill(0);
-        p.text("📖", 115, 310);
-        
-        // Child on computer
-        p.fill(255, 220, 180);
-        p.ellipse(680, 280, 40, 50);
-        p.fill(0);
-        p.ellipse(670, 270, 5, 8);
-        p.ellipse(690, 270, 5, 8);
-        p.arc(680, 285, 20, 15, 0, p.PI);
-        p.fill(150, 150, 200);
-        p.rect(660, 295, 40, 30);
-        p.fill(100);
-        p.rect(665, 295, 30, 20);
-        p.fill(0);
-        p.text("💻", 675, 315);
-        
-        // Adventure kid
-        p.fill(255, 200, 150);
-        p.ellipse(400, 300, 45, 55);
-        p.fill(0);
-        p.ellipse(385, 290, 6, 9);
-        p.ellipse(415, 290, 6, 9);
-        p.arc(400, 305, 25, 18, 0, p.PI);
-        p.fill(255, 100, 100);
-        p.rect(385, 315, 30, 20);
-        p.fill(50, 150, 200);
-        p.rect(390, 290, 20, 30);
-        p.fill(0);
-        p.text("🎒🧭", 385, 340);
-        
-        // Playing kids
-        p.fill(255, 200, 150);
-        p.ellipse(200, 350, 35, 45);
-        p.ellipse(240, 350, 35, 45);
-        p.fill(0);
-        p.ellipse(195, 340, 4, 6);
-        p.ellipse(235, 340, 4, 6);
-        p.arc(200, 355, 15, 10, 0, p.PI);
-        p.arc(240, 355, 15, 10, 0, p.PI);
-        p.fill(255, 100, 100);
-        p.text("⚽", 210, 370);
-        p.text("🎈", 250, 370);
-        
-        // Bouncing ball
-        let bounceY = 360 + p.sin(p.frameCount * 0.1) * 8;
-        p.fill(255, 80, 80);
-        p.circle(500, bounceY, 20);
-        
-        p.fill(0);
-        p.textSize(16);
-        p.text("Reading", 90, 260);
-        p.text("Computer Fun", 660, 260);
-        p.text("Adventure Time", 370, 260);
-        p.text("Play & Laugh", 180, 320);
-      };
+    // p5.js cartoon drawing (robust)
+    if (typeof p5 !== 'undefined') {
+      function sketch(p) {
+        p.setup = function() {
+          let canvas = p.createCanvas(800, 400);
+          canvas.parent('cartoon-sketch');
+          p.frameRate(30);
+        };
+        p.draw = function() {
+          p.background(255, 250, 210);
+          // Sun
+          p.fill(255, 200, 100);
+          p.noStroke();
+          p.circle(700, 70, 80);
+          p.fill(255, 180, 50);
+          p.circle(700, 70, 60);
+          p.stroke(255, 180, 50);
+          p.strokeWeight(4);
+          for (let i = 0; i < 12; i++) {
+            let angle = p.radians(i * 30);
+            let x1 = 700 + p.cos(angle) * 45;
+            let y1 = 70 + p.sin(angle) * 45;
+            let x2 = 700 + p.cos(angle) * 70;
+            let y2 = 70 + p.sin(angle) * 70;
+            p.line(x1, y1, x2, y2);
+          }
+          // Clouds
+          p.fill(255);
+          p.ellipse(100, 50, 70, 50);
+          p.ellipse(130, 40, 60, 50);
+          p.ellipse(70, 60, 60, 50);
+          p.ellipse(600, 40, 80, 60);
+          
+          // Child reading
+          p.fill(255, 220, 180);
+          p.ellipse(120, 280, 40, 50);
+          p.fill(0);
+          p.ellipse(110, 270, 5, 8);
+          p.ellipse(130, 270, 5, 8);
+          p.arc(120, 285, 20, 15, 0, p.PI);
+          p.fill(200, 100, 50);
+          p.rect(100, 295, 40, 20);
+          p.fill(255);
+          p.rect(102, 297, 36, 16);
+          p.fill(0);
+          p.text("📖", 115, 310);
+          
+          // Child on computer
+          p.fill(255, 220, 180);
+          p.ellipse(680, 280, 40, 50);
+          p.fill(0);
+          p.ellipse(670, 270, 5, 8);
+          p.ellipse(690, 270, 5, 8);
+          p.arc(680, 285, 20, 15, 0, p.PI);
+          p.fill(150, 150, 200);
+          p.rect(660, 295, 40, 30);
+          p.fill(100);
+          p.rect(665, 295, 30, 20);
+          p.fill(0);
+          p.text("💻", 675, 315);
+          
+          // Adventure kid
+          p.fill(255, 200, 150);
+          p.ellipse(400, 300, 45, 55);
+          p.fill(0);
+          p.ellipse(385, 290, 6, 9);
+          p.ellipse(415, 290, 6, 9);
+          p.arc(400, 305, 25, 18, 0, p.PI);
+          p.fill(255, 100, 100);
+          p.rect(385, 315, 30, 20);
+          p.fill(50, 150, 200);
+          p.rect(390, 290, 20, 30);
+          p.fill(0);
+          p.text("🎒🧭", 385, 340);
+          
+          // Playing kids
+          p.fill(255, 200, 150);
+          p.ellipse(200, 350, 35, 45);
+          p.ellipse(240, 350, 35, 45);
+          p.fill(0);
+          p.ellipse(195, 340, 4, 6);
+          p.ellipse(235, 340, 4, 6);
+          p.arc(200, 355, 15, 10, 0, p.PI);
+          p.arc(240, 355, 15, 10, 0, p.PI);
+          p.fill(255, 100, 100);
+          p.text("⚽", 210, 370);
+          p.text("🎈", 250, 370);
+          
+          // Bouncing ball
+          let bounceY = 360 + p.sin(p.frameCount * 0.1) * 8;
+          p.fill(255, 80, 80);
+          p.circle(500, bounceY, 20);
+          
+          p.fill(0);
+          p.textSize(16);
+          p.text("Reading", 90, 260);
+          p.text("Computer Fun", 660, 260);
+          p.text("Adventure Time", 370, 260);
+          p.text("Play & Laugh", 180, 320);
+        };
+      }
+      new p5(sketch);
+    } else {
+      console.warn("p5.js not loaded, cartoon canvas will not appear.");
     }
-    new p5(sketch);
 
-    // GSAP Motion Effects
+    // GSAP Animations
     gsap.from(".hero-text", { duration: 1, x: -80, opacity: 0, ease: "back" });
     gsap.from(".hero-media", { duration: 1, scale: 0.9, opacity: 0, delay: 0.2 });
     gsap.from(".cartoon-canvas-container", { scrollTrigger: { trigger: ".cartoon-canvas-container", start: "top 80%" }, duration: 1, y: 50, opacity: 0 });
@@ -631,39 +623,44 @@
     gsap.from(".event-table-wrapper", { scrollTrigger: { trigger: ".event-table-wrapper", start: "top 80%" }, duration: 1, x: -40, opacity: 0 });
     gsap.from(".form-card", { scrollTrigger: { trigger: ".form-card", start: "top 80%" }, duration: 1, scale: 0.95, opacity: 0 });
 
-    // Form submit handler
+    // Form submission
     const regForm = document.getElementById('registrationForm');
     const feedback = document.getElementById('formFeedback');
-    regForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const child = document.getElementById('childName').value.trim();
-      const parent = document.getElementById('parentName').value.trim();
-      const email = document.getElementById('emailReg').value.trim();
-      const fileInput = document.getElementById('receiptUpload');
-      if(!child || !parent || !email) {
-        feedback.innerHTML = "⚠️ Please fill in Child's Name, Parent Name, and Email Address.";
-        feedback.style.color = "#c0392b";
-        return;
-      }
-      if(fileInput.files.length === 0) {
-        feedback.innerHTML = "📎 Please upload the payment receipt (proof of deposit) to complete registration.";
-        feedback.style.color = "#e67e22";
-        return;
-      }
-      feedback.innerHTML = `✅ Thank you ${parent}! Registration for ${child} received. We'll verify your receipt and contact you at ${email}. Welcome to the leaders' family! 🎉`;
-      feedback.style.color = "#2e7d32";
-      fileInput.value = '';
-      setTimeout(() => { feedback.innerHTML = ""; }, 6000);
-    });
+    if (regForm) {
+      regForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const child = document.getElementById('childName').value.trim();
+        const parent = document.getElementById('parentName').value.trim();
+        const email = document.getElementById('emailReg').value.trim();
+        const fileInput = document.getElementById('receiptUpload');
+        if (!child || !parent || !email) {
+          feedback.innerHTML = "⚠️ Please fill in Child's Name, Parent Name, and Email Address.";
+          feedback.style.color = "#c0392b";
+          return;
+        }
+        if (fileInput.files.length === 0) {
+          feedback.innerHTML = "📎 Please upload the payment receipt (proof of deposit) to complete registration.";
+          feedback.style.color = "#e67e22";
+          return;
+        }
+        feedback.innerHTML = `✅ Thank you ${parent}! Registration for ${child} received. We'll verify your receipt and contact you at ${email}. Welcome to the leaders' family! 🎉`;
+        feedback.style.color = "#2e7d32";
+        fileInput.value = '';
+        setTimeout(() => { feedback.innerHTML = ""; }, 6000);
+      });
+    }
 
     // Enroll button scroll
-    document.getElementById('enrollBtn').addEventListener('click', () => {
-      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
-    });
+    const enrollBtn = document.getElementById('enrollBtn');
+    if (enrollBtn) {
+      enrollBtn.addEventListener('click', () => {
+        document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
 
     // 3D hover effect
     const disneyBox = document.querySelector('.disney3d-box');
-    if(disneyBox) {
+    if (disneyBox) {
       disneyBox.addEventListener('mousemove', (e) => {
         const rect = disneyBox.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -679,10 +676,10 @@
     document.querySelectorAll('.nav-links a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if(href && href.startsWith('#')) {
+        if (href && href.startsWith('#')) {
           e.preventDefault();
           const target = document.querySelector(href);
-          if(target) target.scrollIntoView({ behavior: 'smooth' });
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
