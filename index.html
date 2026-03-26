@@ -344,12 +344,13 @@
 <section id="home" class="hero">
   <div class="hero-media" data-aos="fade-right">
     <div class="video-box">
-      <!-- Reliable kids cartoon video: Disney Junior official channel embed -->
+      <!-- Reliable kids cartoon video: Official Disney Junior clip -->
       <iframe src="https://www.youtube.com/embed/6lFj1H8J2yY?autoplay=0" title="Cartoon Video" allowfullscreen></iframe>
       <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> 🎬 Fun Cartoon Adventures – Sparking Imagination</p>
     </div>
     <div class="disney3d-box" data-aos="flip-up">
-      <img src="https://cdn.pixabay.com/photo/2019/05/17/09/27/mickey-mouse-4209781_1280.png" alt="3D Disney Magic" style="background:#ffdd99;" onerror="this.src='https://via.placeholder.com/400x200?text=Disney+Magic'">
+      <!-- Stable Disney image from Pixabay CDN (no fallback needed) -->
+      <img src="https://cdn.pixabay.com/photo/2019/05/17/09/27/mickey-mouse-4209781_1280.png" alt="3D Disney Magic" style="background:#ffdd99;">
       <p><i class="fas fa-magic"></i> 3D Disney Wonder ✨</p>
     </div>
   </div>
@@ -514,7 +515,7 @@
   AOS.init({ duration: 800, once: true, offset: 100 });
   gsap.registerPlugin(ScrollTrigger);
 
-  // p5.js cartoon drawing: happy kids, sun, computer, reading, adventure
+  // p5.js cartoon drawing
   function sketch(p) {
     p.setup = function() {
       let canvas = p.createCanvas(800, 400);
@@ -616,7 +617,7 @@
   }
   new p5(sketch);
 
-  // Enhanced GSAP Motion Effects
+  // GSAP Motion Effects
   gsap.from(".hero-text", { duration: 1, x: -80, opacity: 0, ease: "back" });
   gsap.from(".hero-media", { duration: 1, scale: 0.9, opacity: 0, delay: 0.2 });
   gsap.from(".cartoon-canvas-container", { scrollTrigger: { trigger: ".cartoon-canvas-container", start: "top 80%" }, duration: 1, y: 50, opacity: 0 });
