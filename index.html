@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Motivation for Life ECD | Developing Future Leaders</title>
+  <!-- Google Fonts + Font Awesome + Swiper + AOS + GSAP -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Comic Neue', 'Poppins', cursive;
+      background: linear-gradient(145deg, #fff9e0 0%, #ffe0b0 100%);
+      color: #3b2a1f;
+      overflow-x: hidden;
+    }
+    /* bright color accents */
+    .bg-yellow { background: #FFD966; }
+    .bg-purple { background: #C5A3FF; }
+    .bg-pink { background: #FFB7C5; }
+    .bg-red { background: #FF6B6B; }
+    .text-purple { color: #9B59B6; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #ffddb0; border-radius: 20px; }
+    ::-webkit-scrollbar-thumb { background: #ff914d; border-radius: 20px; }
+
+    /* navbar */
+    .navbar {
+      background: rgba(255, 245, 225, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 4px solid #ffbc6e;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo img {
+      height: 65px;
+      width: auto;
+      border-radius: 30px;
+      box-shadow: 4px 4px 0 #ffaa55;
+      transition: transform 0.3s;
+    }
+    .logo img:hover { transform: scale(1.02); }
+    .logo span {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e67e22, #f39c12);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #c25d00;
+      transition: 0.2s;
+      padding: 5px 12px;
+      border-radius: 40px;
+    }
+    .nav-links a:hover {
+      background: #ffd966;
+      color: #a04100;
+      transform: scale(1.05);
+    }
+    .btn-cartoon {
+      background: linear-gradient(135deg, #ffb347, #ff8c1a);
+      border: none;
+      padding: 12px 28px;
+      font-family: 'Comic Neue', sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 60px;
+      color: white;
+      box-shadow: 0 8px 0 #b45f1b;
+      cursor: pointer;
+      transition: 0.1s linear;
+    }
+    .btn-cartoon:active { transform: translateY(4px); box-shadow: 0 4px 0 #b45f1b; }
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 5%;
+      gap: 2rem;
+    }
+    .hero-media {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .video-box, .disney3d-box {
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 15px 15px 0 #ffbb77;
+      background: #fff0da;
+      padding: 8px;
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 260px;
+      border-radius: 40px;
+      border: none;
+    }
+    .disney3d-box {
+      text-align: center;
+      background: linear-gradient(145deg, #ffe6c4, #ffd7a5);
+      transform-style: preserve-3d;
+      transition: transform 0.4s;
+    }
+    .disney3d-box:hover {
+      transform: rotateY(6deg) rotateX(3deg);
+    }
+    .disney3d-box img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 40px;
+      display: block;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #ff8c42, #ff3c00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .slogan-badge {
+      background: #ffd966;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    /* sections */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      background: #ffd966b3;
+      display: inline-block;
+      width: auto;
+      padding: 0.3rem 2rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+    }
+    .title-wrap { text-align: center; }
+    /* fee cards */
+    .fee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .fee-card {
+      background: white;
+      border-radius: 60px 30px 60px 30px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 12px 12px 0 #ffb347;
+      transition: all 0.2s;
+      border: 3px solid #ffaa66;
+    }
+    .fee-card:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: 18px 18px 0 #ff9f4a;
+    }
+    .fee-card i {
+      font-size: 3rem;
+      background: #ffefcf;
+      padding: 15px;
+      border-radius: 50%;
+      color: #ff6b4a;
+    }
+    .fee-card h3 {
+      font-size: 1.8rem;
+      margin: 0.8rem 0;
+      color: #b64926;
+    }
+    .fee-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #e67e22;
+    }
+    .stationery-badge {
+      background: #fce5b4;
+      border-radius: 30px;
+      padding: 0.5rem;
+      margin-top: 1rem;
+    }
+    /* event table */
+    .event-table-wrapper {
+      overflow-x: auto;
+      background: #fff7e8;
+      border-radius: 60px;
+      padding: 1rem;
+      box-shadow: 12px 12px 0 #ffc285;
+    }
+    .event-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Comic Neue', monospace;
+    }
+    .event-table th, .event-table td {
+      border: 3px solid #ffc48a;
+      padding: 12px 10px;
+      text-align: left;
+    }
+    .event-table th {
+      background: #ffb347;
+      color: white;
+      font-size: 1.2rem;
+    }
+    /* form */
+    .form-card {
+      background: #fff2e2;
+      border-radius: 60px;
+      padding: 2rem;
+      box-shadow: 12px 12px 0 #ffbc6e;
+      margin: 2rem 0;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .form-field label {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .form-field input, .form-field select, .form-field textarea, .form-field input[type="file"] {
+      padding: 12px;
+      border-radius: 40px;
+      border: 2px solid #ffb86b;
+      background: #fffefa;
+      font-family: inherit;
+    }
+    .full-width { grid-column: span 2; }
+    .bank-details {
+      background: #ffebcd;
+      border-radius: 40px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      text-align: center;
+      border: 2px dashed #ff914d;
+    }
+    /* cartoon activity row */
+    .cartoon-activities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .cartoon-icon {
+      background: #ffefcf;
+      border-radius: 100px;
+      padding: 1rem;
+      text-align: center;
+      width: 130px;
+      transition: 0.2s;
+      box-shadow: 8px 8px 0 #ffc48a;
+    }
+    .cartoon-icon i {
+      font-size: 3.5rem;
+      color: #ff7b2c;
+    }
+    .cartoon-icon span {
+      display: block;
+      font-weight: bold;
+    }
+    footer {
+      background: #ffd9a5;
+      margin-top: 3rem;
+      padding: 2rem;
+      text-align: center;
+      border-top-left-radius: 70px;
+      border-top-right-radius: 70px;
+    }
+    @media (max-width: 800px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+    }
+    .floating-emoji {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2.5rem;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 99;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="floating-emoji">🐻‍❄️📚💻🧸🎨</div>
+
+<nav class="navbar">
+  <div class="logo">
+    <img src="WhatsApp Image 2026-03-09 at 18.43.59 (1).jpeg" alt="Motivation for Life ECD Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/80?text=ML+ECD';">
+    <span>Motivation for Life ECD</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#events">Year Plan</a></li>
+    <li><a href="#register">Register</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero with cartoon video + 3D Disney -->
+<section id="home" class="hero">
+  <div class="hero-media" data-aos="fade-right">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/9bZkp7q19f0?autoplay=0&mute=0&controls=1" title="Cartoon Video" allowfullscreen></iframe>
+      <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> 🎬 Fun Cartoon Adventures – Sparking Imagination</p>
+    </div>
+    <div class="disney3d-box" data-aos="flip-up">
+      <img src="https://cdn.pixabay.com/photo/2019/05/17/09/27/mickey-mouse-4209781_1280.png" alt="3D Disney Magic" style="background:#ffdd99;">
+      <p><i class="fas fa-magic"></i> 3D Disney Wonder ✨</p>
+    </div>
+  </div>
+  <div class="hero-text" data-aos="fade-left">
+    <div class="slogan-badge">🌟 Developing Future Leaders 🌟</div>
+    <h1>Motivation for Life <br> Early Childhood Development</h1>
+    <p><i class="fas fa-star-of-life" style="color:#ff6b6b;"></i> Where little hearts grow courage, creativity & leadership!</p>
+    <button class="btn-cartoon" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'});"><i class="fas fa-graduation-cap"></i> Enroll Now – Secure a Spot</button>
+  </div>
+</section>
+
+<!-- CARTOON ACTIVITIES ROW (bright, playful) -->
+<div class="container">
+  <div class="cartoon-activities">
+    <div class="cartoon-icon"><i class="fas fa-book-open"></i><span>Reading Fun</span></div>
+    <div class="cartoon-icon"><i class="fas fa-laptop-code"></i><span>On Computer</span></div>
+    <div class="cartoon-icon"><i class="fas fa-hiking"></i><span>Adventure</span></div>
+    <div class="cartoon-icon"><i class="fas fa-smile-beam"></i><span>Happy Play</span></div>
+    <div class="cartoon-icon"><i class="fas fa-paintbrush-fine"></i><span>Creative Art</span></div>
+    <div class="cartoon-icon"><i class="fas fa-chalkboard-user"></i><span>Leading</span></div>
+  </div>
+</div>
+
+<!-- FEE STRUCTURE SECTION (with all pricing) -->
+<section id="fees" class="container">
+  <div class="title-wrap">
+    <h2 class="section-title" style="background:#FFB7C5; color:#9B2E1F;">💰 Fee Structure 2026</h2>
+  </div>
+  <div class="fee-grid">
+    <div class="fee-card" data-aos="zoom-in">
+      <i class="fas fa-file-signature"></i>
+      <h3>Registration</h3>
+      <div class="price">R250</div>
+      <p>One-time enrollment fee</p>
+    </div>
+    <div class="fee-card" data-aos="zoom-in" data-aos-delay="50">
+      <i class="fas fa-redo-alt"></i>
+      <h3>Re-registration</h3>
+      <div class="price">R150</div>
+      <p>Annual re-enrollment</p>
+    </div>
+    <div class="fee-card" data-aos="zoom-in" data-aos-delay="100">
+      <i class="fas fa-id-card"></i>
+      <h3>Student Card</h3>
+      <div class="price">R250</div>
+      <p>ID & access card</p>
+    </div>
+  </div>
+  <div class="fee-grid">
+    <div class="fee-card" data-aos="flip-left">
+      <i class="fas fa-baby-carriage"></i>
+      <h3>0 – 2 Years</h3>
+      <div class="price">R800 / month</div>
+      <div class="stationery-badge">📚 Stationery: R300</div>
+    </div>
+    <div class="fee-card" data-aos="flip-left" data-aos-delay="50">
+      <i class="fas fa-child"></i>
+      <h3>0 – 3 Years</h3>
+      <div class="price">R700 / month</div>
+      <div class="stationery-badge">📚 Stationery: R300</div>
+    </div>
+    <div class="fee-card" data-aos="flip-left" data-aos-delay="100">
+      <i class="fas fa-puzzle-piece"></i>
+      <h3>3 – 4 Years</h3>
+      <div class="price">R600 / month</div>
+      <div class="stationery-badge">📚 Stationery: R450</div>
+    </div>
+    <div class="fee-card" data-aos="flip-left" data-aos-delay="150">
+      <i class="fas fa-graduation-cap"></i>
+      <h3>Grade R</h3>
+      <div class="price">R800 / month</div>
+      <div class="stationery-badge">📚 Stationery: R450<br>🎓 Graduation Included!</div>
+    </div>
+  </div>
+  <p style="text-align:center; background:#FFD966; border-radius: 40px; padding: 10px; margin-top:1rem;"><i class="fas fa-info-circle"></i> All fees include nutritious snacks & learning materials. Stationery packs are optional but recommended.</p>
+</section>
+
+<!-- YEAR PLAN TABLE (events) -->
+<section id="events" class="container">
+  <div class="title-wrap">
+    <h2 class="section-title" style="background:#C5A3FF; color:#3b2a1f;">📅 2026 Leadership Events Calendar</h2>
+  </div>
+  <div class="event-table-wrapper" data-aos="fade-up">
+    <table class="event-table">
+      <thead>
+        <tr><th>Date</th><th>Event / Purpose</th><th>Time</th><th>Dress Code</th><th>Venue</th><th>Amount</th>
+      </thead>
+      <tbody>
+        <tr><td>15 May 2026</td><td>🌟 Little Leaders Gala – Confidence Showcase</td><td>09:00 – 12:00</td><td>Formal / Superhero theme</td><td>Main Hall, Motivation Centre</td><td>R150</td></tr>
+        <tr><td>12 June 2026</td><td>🎨 Creativity Carnival – Art & Storytelling</td><td>10:00 – 13:00</td><td>Colorful casual (paint-friendly)</td><td>Outdoor Play Garden</td><td>R80</td></tr>
+        <tr><td>28 Aug 2026</td><td>🏆 Future Entrepreneurs Day – Mini Market</td><td>09:30 – 14:00</td><td>Smart casual / business theme</td><td>ECD Multipurpose Hall</td><td>R120</td></tr>
+        <tr><td>20 Nov 2026</td><td>🎄 Year End Leadership Ceremony & Party</td><td>10:00 – 13:30</td><td>Party / Disney Character outfit</td><td>Motivation for Life Campus</td><td>R200</td></tr>
+        <tr><td>13 Mar 2026</td><td>🌱 Parent-Child Leadership Workshop</td><td>09:00 – 11:30</td><td>Comfortable active wear</td><td>ECD Gym & Playroom</td><td>Free</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ONLINE REGISTRATION + RECEIPT UPLOAD -->
+<section id="register" class="container">
+  <div class="title-wrap">
+    <h2 class="section-title" style="background:#FF6B6B; color:white;">📝 Register Your Future Leader</h2>
+  </div>
+  <div class="form-card" data-aos="fade-up">
+    <h3 style="text-align:center;"><i class="fas fa-child"></i> Admission & Payment Receipt Upload</h3>
+    <form id="registrationForm" enctype="multipart/form-data">
+      <div class="form-grid">
+        <div class="form-field"><label>🧸 Child's Full Name *</label><input type="text" id="childName" required placeholder="e.g., Lily Johnson"></div>
+        <div class="form-field"><label>📅 Child's Date of Birth</label><input type="date" id="childDob"></div>
+        <div class="form-field"><label>👩 Parent/Guardian Name *</label><input type="text" id="parentName" required></div>
+        <div class="form-field"><label>📧 Email Address *</label><input type="email" id="emailReg" required placeholder="motivationforlife581@gmail.com"></div>
+        <div class="form-field"><label>📞 Phone Number</label><input type="tel" id="phoneReg"></div>
+        <div class="form-field"><label>🏠 Address</label><textarea rows="2" id="address" placeholder="Suburb, City"></textarea></div>
+        <div class="form-field full-width"><label>💳 Upload Payment Receipt (Proof of Deposit) *</label><input type="file" id="receiptUpload" accept="image/*,.pdf,.jpg,.png"></div>
+        <div class="form-field full-width"><label>📝 Additional Notes</label><textarea rows="2" id="notes" placeholder="Any special requirements? e.g., stationery pack selection"></textarea></div>
+      </div>
+      <div class="bank-details">
+        <i class="fas fa-university"></i> <strong>Bank Account Details for Registration Fee / Tuition</strong><br>
+        <strong>Bank:</strong> First National Bank (FNB)<br>
+        <strong>Account Holder:</strong> Motivation for Life ECD<br>
+        <strong>Account Number:</strong> 62687046097<br>
+        <strong>Email Enquiries:</strong> motivationforlife581@gmail.com<br>
+        <small>💡 Please upload proof of payment after deposit. Registration is confirmed after receipt verification.</small>
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit" class="btn-cartoon"><i class="fas fa-cloud-upload-alt"></i> Submit Registration & Receipt</button>
+        <button type="reset" class="btn-cartoon btn-outline" style="background:#ffe0b5; color:#b45f1b; margin-left:1rem;"><i class="fas fa-undo-alt"></i> Clear</button>
+      </div>
+    </form>
+    <p id="formFeedback" style="text-align:center; margin-top:1rem; font-weight:bold;"></p>
+  </div>
+</section>
+
+<!-- CONTACT INFO + ACCOUNT DETAILS -->
+<section id="contact" class="container">
+  <div class="title-wrap">
+    <h2 class="section-title" style="background:#FFD966;">📞 Get in Touch</h2>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+    <div style="background:#fff0db; border-radius: 50px; padding: 1.8rem; flex:1; text-align:center;" data-aos="flip-left">
+      <i class="fas fa-piggy-bank" style="font-size: 3rem; color:#ff914d;"></i>
+      <h3>Official Banking</h3>
+      <p><strong>FNB</strong><br>Acc: 62687046097<br>Motivation for Life ECD<br>Branch Code: 250655</p>
+      <p><i class="fas fa-envelope"></i> motivationforlife581@gmail.com</p>
+    </div>
+    <div style="background:#fff0db; border-radius: 50px; padding: 1.8rem; flex:1; text-align:center;" data-aos="flip-right">
+      <i class="fas fa-map-marker-alt" style="font-size: 3rem; color:#ff914d;"></i>
+      <h3>Our Daycare Hub</h3>
+      <p>123 Sunshine Boulevard, Johannesburg<br>Mon-Fri: 7:00 – 17:30<br><i class="fas fa-phone-alt"></i> +27 81 234 5678</p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 2rem; font-size: 1.3rem; background: #ffedc9; border-radius: 100px; padding: 1rem;">
+    🌈 "Developing Future Leaders with Love, Play & Purpose" 🌈
+  </div>
+</section>
+
+<footer>
+  <div style="display: flex; justify-content: center; gap: 2rem; font-size: 2rem;">
+    <i class="fab fa-facebook-square"></i> <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
+  </div>
+  <p>© 2026 Motivation for Life ECD – Growing Tomorrow’s Leaders Today | All smiles welcome 🧸✨</p>
+  <p>📧 motivationforlife581@gmail.com | 📞 +27 81 234 5678</p>
+</footer>
+
+<!-- Libraries: GSAP, Swiper, AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 100 });
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".hero-text", { duration: 1, x: -60, opacity: 0, ease: "back" });
+  gsap.from(".hero-media", { duration: 1, scale: 0.95, opacity: 0, delay: 0.2 });
+  gsap.from(".cartoon-icon", { scrollTrigger: { trigger: ".cartoon-activities", start: "top 80%" }, duration: 0.5, scale: 0, stagger: 0.1, ease: "back" });
+
+  // Registration form handler
+  const regForm = document.getElementById('registrationForm');
+  const feedback = document.getElementById('formFeedback');
+  regForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const child = document.getElementById('childName').value.trim();
+    const parent = document.getElementById('parentName').value.trim();
+    const email = document.getElementById('emailReg').value.trim();
+    const fileInput = document.getElementById('receiptUpload');
+    if(!child || !parent || !email) {
+      feedback.innerHTML = "⚠️ Please fill in Child's Name, Parent Name, and Email Address.";
+      feedback.style.color = "#c0392b";
+      return;
+    }
+    if(fileInput.files.length === 0) {
+      feedback.innerHTML = "📎 Please upload the payment receipt (proof of deposit) to complete registration.";
+      feedback.style.color = "#e67e22";
+      return;
+    }
+    feedback.innerHTML = `✅ Thank you ${parent}! Registration for ${child} received. We'll verify your receipt and contact you at ${email}. Welcome to the leaders' family! 🎉`;
+    feedback.style.color = "#2e7d32";
+    fileInput.value = '';
+    setTimeout(() => { feedback.innerHTML = ""; }, 6000);
+  });
+
+  // 3D hover effect
+  const disneyBox = document.querySelector('.disney3d-box');
+  if(disneyBox) {
+    disneyBox.addEventListener('mousemove', (e) => {
+      const rect = disneyBox.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      disneyBox.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${y * -8}deg)`;
+    });
+    disneyBox.addEventListener('mouseleave', () => {
+      disneyBox.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
+    });
+  }
+
+  // smooth scroll for nav links
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
