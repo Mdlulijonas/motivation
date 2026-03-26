@@ -20,10 +20,12 @@
       overflow-x: hidden;
       min-height: 100vh;
     }
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: #ffddb0; border-radius: 20px; }
     ::-webkit-scrollbar-thumb { background: #ff914d; border-radius: 20px; }
 
+    /* Navbar */
     .navbar {
       background: rgba(255, 245, 225, 0.98);
       backdrop-filter: blur(12px);
@@ -78,6 +80,8 @@
       color: white;
       transform: scale(1.05);
     }
+    
+    /* Buttons */
     .btn-cartoon {
       background: linear-gradient(135deg, #FF6B6B, #FF8C42);
       border: none;
@@ -94,6 +98,7 @@
     .btn-cartoon:active { transform: translateY(4px); box-shadow: 0 4px 0 #b45f1b; }
     .btn-cartoon:hover { transform: translateY(2px); box-shadow: 0 6px 0 #b45f1b; }
 
+    /* Hero Section */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -129,9 +134,9 @@
       transform-style: preserve-3d;
       transition: transform 0.4s;
       border-radius: 50px;
-      padding: 8px;
+      padding: 20px;
       box-shadow: 15px 15px 0 #C5A3FF;
-      min-height: 250px;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -140,13 +145,7 @@
     .disney3d-box:hover {
       transform: rotateY(6deg) rotateX(3deg);
     }
-    .disney3d-box img {
-      width: 100%;
-      max-height: 220px;
-      object-fit: contain;
-      border-radius: 40px;
-      display: block;
-    }
+    
     .hero-text {
       flex: 1;
       min-width: 280px;
@@ -171,6 +170,7 @@
       color: #9B2E1F;
     }
 
+    /* Canvas Area */
     .cartoon-canvas-container {
       background: #FFEAA7;
       border-radius: 70px;
@@ -178,6 +178,7 @@
       padding: 1rem;
       text-align: center;
       box-shadow: 20px 20px 0 #FFB7C5;
+      min-height: 300px;
     }
     canvas {
       display: block;
@@ -185,11 +186,9 @@
       border-radius: 50px;
       background: #FFFAF0;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      width: 100%;
-      height: auto;
-      max-width: 800px;
     }
 
+    /* Container & Sections */
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -206,9 +205,9 @@
       margin-bottom: 2rem;
       color: #2c1a0e;
     }
-    .title-wrap {
-      text-align: center;
-    }
+    .title-wrap { text-align: center; }
+
+    /* Fee Cards */
     .fee-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,6 +251,7 @@
       margin-top: 1rem;
     }
 
+    /* Table */
     .event-table-wrapper {
       overflow-x: auto;
       background: #fff7e8;
@@ -275,6 +275,7 @@
       font-size: 1.2rem;
     }
 
+    /* Form */
     .form-card {
       background: #fff2e2;
       border-radius: 60px;
@@ -296,7 +297,7 @@
       font-weight: bold;
       font-size: 1rem;
     }
-    .form-field input, .form-field select, .form-field textarea {
+    .form-field input, .form-field select {
       padding: 12px;
       border-radius: 40px;
       border: 2px solid #FFB7C5;
@@ -304,12 +305,13 @@
       font-family: inherit;
       font-size: 1rem;
     }
-    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    .form-field input:focus, .form-field select:focus {
       outline: none;
       border-color: #FF6B6B;
       box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
     }
     .full-width { grid-column: span 2; }
+    
     .bank-details {
       background: #ffebcd;
       border-radius: 40px;
@@ -319,7 +321,7 @@
       border: 2px dashed #FF6B6B;
     }
     
-    /* Contact cards */
+    /* Contact */
     .contact-grid {
       display: flex;
       flex-wrap: wrap;
@@ -335,35 +337,7 @@
       text-align: center;
     }
     
-    /* Floating shapes animation */
-    .floating-shapes {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .shape {
-      position: absolute;
-      opacity: 0.3;
-      animation: floatShape 20s infinite ease-in-out;
-    }
-    .shape:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-    .shape:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
-    .shape:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 4s; }
-    .shape:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 6s; }
-    .shape:nth-child(5) { top: 50%; left: 80%; animation-delay: 8s; }
-    
-    @keyframes floatShape {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-30px) rotate(10deg); }
-      50% { transform: translateY(0) rotate(0deg); }
-      75% { transform: translateY(30px) rotate(-10deg); }
-    }
-    
+    /* Footer */
     footer {
       background: #FFD966;
       margin-top: 3rem;
@@ -373,6 +347,30 @@
       border-top-right-radius: 70px;
     }
     
+    /* Floating BG Shapes */
+    .floating-shapes {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .shape {
+      position: absolute;
+      opacity: 0.2;
+      animation: floatShape 20s infinite ease-in-out;
+    }
+    .shape:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+    .shape:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+    .shape:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 4s; }
+    .shape:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 6s; }
+    
+    @keyframes floatShape {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+    }
+    
     @media (max-width: 800px) {
       .navbar { flex-direction: column; gap: 1rem; }
       .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
@@ -380,19 +378,17 @@
       .full-width { grid-column: span 1; }
       .hero-text h1 { font-size: 2rem; }
       .section-title { font-size: 1.8rem; }
-      .slogan-badge { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Floating Background Shapes -->
+<!-- Floating Background -->
 <div class="floating-shapes">
   <div class="shape"><svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#FF6B6B"/></svg></div>
   <div class="shape"><svg width="50" height="50" viewBox="0 0 50 50"><rect x="10" y="10" width="30" height="30" rx="8" fill="#FFD966"/></svg></div>
   <div class="shape"><svg width="55" height="55" viewBox="0 0 55 55"><polygon points="27.5,5 50,50 5,50" fill="#FFB7C5"/></svg></div>
   <div class="shape"><svg width="45" height="45" viewBox="0 0 45 45"><circle cx="22.5" cy="22.5" r="20" fill="#C5A3FF"/></svg></div>
-  <div class="shape"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="5" y="5" width="30" height="30" rx="15" fill="#FF8C42"/></svg></div>
 </div>
 
 <nav class="navbar">
@@ -413,41 +409,32 @@
   <div class="hero-media" data-aos="fade-right">
     <div class="videoBox">
       <iframe src="https://www.youtube.com/embed/6lFj1H8J2yY" title="Cartoon Video" allowfullscreen loading="lazy"></iframe>
-      <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> Fun Cartoon Adventures - Sparking Imagination</p>
+      <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> Fun Cartoon Adventures</p>
     </div>
     <div class="disney3d-box" data-aos="flip-up">
-      <!-- Safe inline SVG instead of external image to avoid CORB -->
-      <svg width="200" height="180" viewBox="0 0 200 180" style="max-width: 200px;">
-        <!-- Castle -->
-        <rect x="60" y="80" width="80" height="100" fill="#FFE4E1" stroke="#FF6B6B" stroke-width="3"/>
-        <polygon points="100,20 140,80 60,80" fill="#FFD966" stroke="#FF8C42" stroke-width="2"/>
-        <polygon points="50,50 80,80 20,80" fill="#FFB7C5" stroke="#FF6B6B" stroke-width="2"/>
-        <polygon points="150,50 180,80 120,80" fill="#FFB7C5" stroke="#FF6B6B" stroke-width="2"/>
-        <!-- Windows -->
-        <circle cx="85" cy="110" r="10" fill="#87CEEB"/>
-        <circle cx="115" cy="110" r="10" fill="#87CEEB"/>
-        <rect x="90" y="140" width="20" height="40" rx="10" fill="#C5A3FF"/>
-        <!-- Stars -->
-        <text x="30" y="40" font-size="16" fill="#FFD966">★</text>
-        <text x="160" y="35" font-size="14" fill="#FFB7C5">★</text>
-        <text x="100" y="10" font-size="12" fill="#FF6B6B">★</text>
-        <!-- Flag -->
-        <line x1="100" y1="20" x2="100" y2="5" stroke="#8B4513" stroke-width="2"/>
-        <polygon points="100,5 120,12 100,19" fill="#FF6B6B"/>
+      <!-- Inline SVG (No CORB issues) -->
+      <svg width="180" height="150" viewBox="0 0 200 180" style="max-width: 180px;">
+        <rect x="50" y="70" width="100" height="110" fill="#FFE4E1" stroke="#FF6B6B" stroke-width="3"/>
+        <polygon points="100,10 150,70 50,70" fill="#FFD966" stroke="#FF8C42" stroke-width="2"/>
+        <circle cx="80" cy="100" r="8" fill="#87CEEB"/>
+        <circle cx="120" cy="100" r="8" fill="#87CEEB"/>
+        <rect x="85" y="130" width="30" height="50" rx="15" fill="#C5A3FF"/>
+        <text x="30" y="30" font-size="20" fill="#FFD966">★</text>
+        <text x="160" y="40" font-size="18" fill="#FFB7C5">★</text>
       </svg>
-      <p style="margin-top: 10px; font-weight: bold;"><i class="fas fa-crown"></i> Magic Castle Adventure</p>
+      <p style="margin-top:10px; font-weight:bold;">Magic Castle</p>
     </div>
   </div>
   <div class="hero-text" data-aos="fade-left">
     <div class="slogan-badge">Developing Future Leaders</div>
     <h1>Motivation for Life <br> Early Childhood Development</h1>
-    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;"><i class="fas fa-star-of-life" style="color:#ff6b6b;"></i> Where little hearts grow courage, creativity & leadership!</p>
-    <button class="btn-cartoon" id="enrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now - Secure a Spot</button>
+    <p style="font-size: 1.2rem; margin: 1rem 0;"><i class="fas fa-star-of-life" style="color:#ff6b6b;"></i> Where little hearts grow courage, creativity & leadership!</p>
+    <button class="btn-cartoon" id="enrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now</button>
   </div>
 </section>
 
 <div class="cartoon-canvas-container" data-aos="zoom-in">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Our Happy Cartoon World</h2>
+  <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Our Happy Cartoon World</h2>
   <div id="cartoon-sketch"></div>
 </div>
 
@@ -476,90 +463,46 @@
     <div class="fee-card" data-aos="flip-left">
       <i class="fas fa-baby-carriage"></i>
       <h3>0 - 2 Years</h3>
-      <div class="price">R800 / month</div>
+      <div class="price">R800 / m</div>
       <div class="stationery-badge">Stationery: R300</div>
     </div>
     <div class="fee-card" data-aos="flip-left" data-aos-delay="50">
       <i class="fas fa-child"></i>
-      <h3>0 - 3 Years</h3>
-      <div class="price">R700 / month</div>
+      <h3>2 - 3 Years</h3>
+      <div class="price">R700 / m</div>
       <div class="stationery-badge">Stationery: R300</div>
     </div>
     <div class="fee-card" data-aos="flip-left" data-aos-delay="100">
       <i class="fas fa-puzzle-piece"></i>
       <h3>3 - 4 Years</h3>
-      <div class="price">R600 / month</div>
+      <div class="price">R600 / m</div>
       <div class="stationery-badge">Stationery: R450</div>
     </div>
     <div class="fee-card" data-aos="flip-left" data-aos-delay="150">
       <i class="fas fa-graduation-cap"></i>
       <h3>Grade R</h3>
-      <div class="price">R800 / month</div>
-      <div class="stationery-badge">Stationery: R450<br>Graduation Included!</div>
+      <div class="price">R800 / m</div>
+      <div class="stationery-badge">Graduation Included!</div>
     </div>
   </div>
-  <p style="text-align:center; background:#FFD966; border-radius: 40px; padding: 15px; margin-top:1rem;">
-    <i class="fas fa-info-circle"></i> All fees include nutritious snacks & learning materials. Stationery packs are optional but recommended.
-  </p>
 </section>
 
 <section id="events" class="container">
   <div class="title-wrap">
-    <h2 class="section-title" style="background:#C5A3FF;">2026 Leadership Events Calendar</h2>
+    <h2 class="section-title" style="background:#C5A3FF;">2026 Events Calendar</h2>
   </div>
   <div class="event-table-wrapper" data-aos="fade-up">
     <table class="event-table">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Event / Purpose</th>
-          <th>Time</th>
-          <th>Dress Code</th>
-          <th>Venue</th>
-          <th>Amount</th>
+          <th>Date</th><th>Event</th><th>Time</th><th>Dress Code</th><th>Amount</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>15 May 2026</td>
-          <td>Little Leaders Gala - Confidence Showcase</td>
-          <td>09:00 - 12:00</td>
-          <td>Formal / Superhero theme</td>
-          <td>Main Hall, Motivation Centre</td>
-          <td>R150</td>
-        </tr>
-        <tr>
-          <td>12 June 2026</td>
-          <td>Creativity Carnival - Art & Storytelling</td>
-          <td>10:00 - 13:00</td>
-          <td>Colorful casual (paint-friendly)</td>
-          <td>Outdoor Play Garden</td>
-          <td>R80</td>
-        </tr>
-        <tr>
-          <td>28 Aug 2026</td>
-          <td>Future Entrepreneurs Day - Mini Market</td>
-          <td>09:30 - 14:00</td>
-          <td>Smart casual / business theme</td>
-          <td>ECD Multipurpose Hall</td>
-          <td>R120</td>
-        </tr>
-        <tr>
-          <td>20 Nov 2026</td>
-          <td>Year End Leadership Ceremony & Party</td>
-          <td>10:00 - 13:30</td>
-          <td>Party / Disney Character outfit</td>
-          <td>Motivation for Life Campus</td>
-          <td>R200</td>
-        </tr>
-        <tr>
-          <td>13 Mar 2026</td>
-          <td>Parent-Child Leadership Workshop</td>
-          <td>09:00 - 11:30</td>
-          <td>Comfortable active wear</td>
-          <td>ECD Gym & Playroom</td>
-          <td>Free</td>
-        </tr>
+        <tr><td>15 May</td><td>Little Leaders Gala</td><td>09:00 - 12:00</td><td>Formal / Superhero</td><td>R150</td></tr>
+        <tr><td>12 June</td><td>Creativity Carnival</td><td>10:00 - 13:00</td><td>Casual (Paint-friendly)</td><td>R80</td></tr>
+        <tr><td>28 Aug</td><td>Entrepreneurs Day</td><td>09:30 - 14:00</td><td>Smart Casual</td><td>R120</td></tr>
+        <tr><td>20 Nov</td><td>Year End Ceremony</td><td>10:00 - 13:30</td><td>Party / Disney</td><td>R200</td></tr>
       </tbody>
     </table>
   </div>
@@ -567,20 +510,20 @@
 
 <section id="register" class="container">
   <div class="title-wrap">
-    <h2 class="section-title" style="background:#FF6B6B; color:white;">Register Your Future Leader</h2>
+    <h2 class="section-title" style="background:#FF6B6B; color:white;">Register Now</h2>
   </div>
   <div class="form-card" data-aos="fade-up">
-    <h3 style="text-align:center; margin-bottom: 1.5rem;"><i class="fas fa-child"></i> Admission & Payment Receipt Upload</h3>
-    <form id="registrationForm" enctype="multipart/form-data">
+    <h3 style="text-align:center; margin-bottom: 1.5rem;">Admission Form</h3>
+    <form id="registrationForm">
       <div class="form-grid">
         <div class="form-field">
           <label for="childName">Child's Full Name *</label>
-          <input type="text" id="childName" name="childName" required placeholder="e.g., Lily Johnson" autocomplete="name">
+          <!-- Standard autocomplete values used below -->
+          <input type="text" id="childName" name="childName" required autocomplete="name">
         </div>
         <div class="form-field">
           <label for="childDob">Child's Date of Birth</label>
-          <!-- Fixed: removed autocomplete="bday" (non-standard), using "bday" is actually valid but let's ensure it works -->
-          <input type="date" id="childDob" name="childDob" autocomplete="bday">
+          <input type="date" id="childDob" name="childDob">
         </div>
         <div class="form-field">
           <label for="parentName">Parent/Guardian Name *</label>
@@ -588,7 +531,7 @@
         </div>
         <div class="form-field">
           <label for="emailReg">Email Address *</label>
-          <input type="email" id="emailReg" name="emailReg" required placeholder="motivationforlife581@gmail.com" autocomplete="email">
+          <input type="email" id="emailReg" name="emailReg" required autocomplete="email">
         </div>
         <div class="form-field">
           <label for="phoneReg">Phone Number</label>
@@ -596,354 +539,143 @@
         </div>
         <div class="form-field">
           <label for="address">Address</label>
-          <!-- Fixed: "street-address" is valid, but we'll keep it -->
-          <input type="text" id="address" name="address" placeholder="Winterveld, via Paving Road, Pretoria" autocomplete="street-address">
+          <input type="text" id="address" name="address" autocomplete="street-address">
         </div>
         <div class="form-field full-width">
-          <label for="receiptUpload">Upload Payment Receipt (Proof of Deposit) *</label>
-          <!-- Fixed: removed non-standard autocomplete value -->
-          <input type="file" id="receiptUpload" name="receiptUpload" accept="image/*,.pdf,.jpg,.png" required>
-        </div>
-        <div class="form-field full-width">
-          <label for="notes">Additional Notes</label>
-          <textarea rows="2" id="notes" name="notes" placeholder="Stationery preference or special requirements"></textarea>
+          <label for="receiptUpload">Upload Payment Receipt *</label>
+          <!-- Removed non-standard autocomplete attribute completely -->
+          <input type="file" id="receiptUpload" name="receiptUpload" accept="image/*,.pdf" required>
         </div>
       </div>
+      
       <div class="bank-details">
-        <i class="fas fa-university"></i> <strong>Bank Account Details for Registration Fee / Tuition</strong><br>
-        <strong>Bank:</strong> First National Bank (FNB)<br>
-        <strong>Account Holder:</strong> Motivation for Life ECD<br>
-        <strong>Account Number:</strong> 62687046097<br>
-        <strong>Email Enquiries:</strong> motivationforlife581@gmail.com<br>
-        <small>Please upload proof of payment after deposit. Registration is confirmed after receipt verification.</small>
+        <strong>Bank: FNB | Acc: 62687046097 | Motivation for Life ECD</strong><br>
+        <small>Email: motivationforlife581@gmail.com</small>
       </div>
-      <div style="text-align: center; margin-top: 1.5rem;">
-        <button type="submit" class="btn-cartoon"><i class="fas fa-cloud-upload-alt"></i> Submit Registration & Receipt</button>
-        <button type="reset" class="btn-cartoon" style="background:#ffe0b5; color:#b45f1b; margin-left:1rem; box-shadow:0 8px 0 #b45f1b;"><i class="fas fa-undo-alt"></i> Clear</button>
+      
+      <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit" class="btn-cartoon">Submit Registration</button>
       </div>
     </form>
-    <p id="formFeedback" style="text-align:center; margin-top:1.5rem; font-weight:bold; font-size: 1.1rem;"></p>
+    <p id="formFeedback" style="text-align:center; margin-top:1rem; font-weight:bold;"></p>
   </div>
 </section>
 
 <section id="contact" class="container">
   <div class="title-wrap">
-    <h2 class="section-title" style="background:#FFD966;">Get in Touch</h2>
+    <h2 class="section-title">Contact Us</h2>
   </div>
   <div class="contact-grid">
     <div class="contact-card" data-aos="flip-left">
-      <i class="fas fa-piggy-bank" style="font-size: 3rem; color:#ff914d;"></i>
-      <h3 style="margin: 1rem 0;">Official Banking</h3>
-      <p><strong>FNB</strong><br>Acc: 62687046097<br>Motivation for Life ECD<br>Branch Code: 250655</p>
-      <p><i class="fas fa-envelope"></i> motivationforlife581@gmail.com</p>
+      <i class="fas fa-piggy-bank" style="font-size: 2.5rem; color:#ff914d;"></i>
+      <h3>Banking Details</h3>
+      <p><strong>FNB</strong><br>Acc: 62687046097<br>Branch: 250655</p>
     </div>
     <div class="contact-card" data-aos="flip-right">
-      <i class="fas fa-map-marker-alt" style="font-size: 3rem; color:#ff914d;"></i>
-      <h3 style="margin: 1rem 0;">Our Daycare Hub</h3>
-      <p><strong>Winterveld, via Paving Road</strong><br>Pretoria, South Africa<br>Mon-Fri: 7:00 - 17:30<br><i class="fas fa-phone-alt"></i> +27 81 234 5678</p>
+      <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color:#ff914d;"></i>
+      <h3>Location</h3>
+      <p>Winterveld, via Paving Road<br>Pretoria, South Africa<br>Mon-Fri: 7:00 - 17:30</p>
     </div>
-  </div>
-  <div style="text-align: center; margin-top: 2rem; font-size: 1.3rem; background: #ffedc9; border-radius: 100px; padding: 1.2rem;">
-    "Developing Future Leaders with Love, Play & Purpose"
   </div>
 </section>
 
 <footer>
-  <div style="display: flex; justify-content: center; gap: 2rem; font-size: 2rem; margin-bottom: 1rem;">
-    <i class="fab fa-facebook-square" style="color: #1877f2; cursor: pointer;"></i>
-    <i class="fab fa-instagram" style="color: #e4405f; cursor: pointer;"></i>
-    <i class="fab fa-youtube" style="color: #ff0000; cursor: pointer;"></i>
-  </div>
-  <p>2026 Motivation for Life ECD - Growing Tomorrow's Leaders Today | All smiles welcome</p>
-  <p style="margin-top: 0.5rem;">motivationforlife581@gmail.com | +27 81 234 5678 | Winterveld, via Paving Road, Pretoria</p>
+  <p>2026 Motivation for Life ECD | Developing Future Leaders</p>
 </footer>
 
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS
+    
+    // 1. Initialize AOS
     AOS.init({ duration: 800, once: true, offset: 100 });
 
-    // Register GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+    // 2. Initialize GSAP
+    if (typeof gsap !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-text", { duration: 1, x: -50, opacity: 0 });
+      gsap.from(".hero-media", { duration: 1, x: 50, opacity: 0, delay: 0.2 });
+    }
 
-    // p5.js cartoon drawing
+    // 3. Initialize p5.js (Simplified for stability)
     if (typeof p5 !== 'undefined') {
-      const sketch = function(p) {
+      new p5(function(p) {
         p.setup = function() {
-          const canvas = p.createCanvas(800, 400);
+          var canvas = p.createCanvas(700, 350);
           canvas.parent('cartoon-sketch');
-          p.frameRate(30);
+          p.noStroke();
         };
-        
         p.draw = function() {
           p.background(255, 250, 230);
           
-          // Ground
-          p.fill(144, 238, 144);
-          p.noStroke();
-          p.rect(0, 340, 800, 60);
-          
-          // Sun with rays
-          p.push();
-          p.translate(700, 70);
+          // Simple Sun
           p.fill(255, 200, 50);
-          p.circle(0, 0, 70);
-          p.stroke(255, 180, 50);
-          p.strokeWeight(3);
-          for (let i = 0; i < 12; i++) {
-            let angle = p.radians(i * 30 + p.frameCount * 0.5);
-            p.line(p.cos(angle) * 40, p.sin(angle) * 40, p.cos(angle) * 60, p.sin(angle) * 60);
-          }
-          p.pop();
+          p.circle(600, 60, 60);
           
-          // Clouds
+          // Simple Clouds
           p.fill(255);
-          p.noStroke();
-          drawCloud(p, 100, 60, 1);
-          drawCloud(p, 600, 45, 1.2);
+          p.ellipse(100, 50, 60, 40);
+          p.ellipse(130, 40, 50, 30);
           
-          // School building
-          p.fill(255, 240, 220);
-          p.stroke(200, 150, 100);
-          p.strokeWeight(2);
-          p.rect(350, 200, 120, 140);
-          p.fill(200, 100, 80);
-          p.triangle(350, 200, 410, 150, 470, 200);
-          // Windows
-          p.fill(135, 206, 250);
-          p.rect(365, 220, 30, 35);
-          p.rect(415, 220, 30, 35);
-          // Door
-          p.fill(139, 90, 43);
-          p.rect(395, 280, 30, 60, 5, 5, 0, 0);
+          // Ground
+          p.fill(180, 230, 180);
+          p.rect(0, 280, 700, 70);
           
-          // Child 1 - Reading
-          drawChild(p, 120, 310, [255, 220, 180], [200, 100, 100], 'read');
-          
-          // Child 2 - Computer
-          drawChild(p, 680, 310, [255, 200, 150], [100, 150, 200], 'computer');
-          
-          // Child 3 - Playing
-          drawChild(p, 260, 320, [255, 210, 170], [150, 200, 100], 'play');
-          
-          // Bouncing ball
-          let bounceY = 330 + p.sin(p.frameCount * 0.15) * 15;
+          // Moving Ball
+          var ballX = (p.frameCount * 2) % 750;
           p.fill(255, 100, 100);
-          p.noStroke();
-          p.circle(550, bounceY, 25);
-          p.fill(255);
-          p.arc(550, bounceY, 25, 25, -p.PI/4, p.PI/4);
+          p.circle(ballX - 25, 260, 25);
           
-          // Butterflies
-          drawButterfly(p, 200 + p.sin(p.frameCount * 0.05) * 30, 100 + p.cos(p.frameCount * 0.03) * 20, p.frameCount);
-          drawButterfly(p, 500 + p.cos(p.frameCount * 0.04) * 25, 80 + p.sin(p.frameCount * 0.05) * 15, p.frameCount + 50);
+          // Simple Kid 1
+          p.fill(255, 220, 180); // Skin
+          p.circle(150, 250, 30); // Head
+          p.fill(100, 150, 255); // Shirt
+          p.rect(138, 265, 25, 30, 5); // Body
           
-          // Labels
-          p.fill(80, 60, 40);
-          p.noStroke();
-          p.textSize(14);
-          p.textAlign(p.CENTER);
-          p.text('Reading Time', 120, 370);
-          p.text('Computer Fun', 680, 370);
-          p.text('Play Area', 260, 370);
-          p.text('Our School', 410, 370);
-        };
-        
-        function drawCloud(p, x, y, scale) {
-          p.push();
-          p.translate(x, y);
-          p.scale(scale);
-          p.ellipse(0, 0, 60, 40);
-          p.ellipse(-25, 5, 40, 30);
-          p.ellipse(25, 5, 50, 35);
-          p.pop();
-        }
-        
-        function drawChild(p, x, y, skinColor, shirtColor, activity) {
-          p.push();
-          p.translate(x, y);
+          // Simple Kid 2
+          p.fill(255, 200, 150);
+          p.circle(500, 250, 30);
+          p.fill(255, 100, 150);
+          p.rect(488, 265, 25, 30, 5);
           
-          // Body
-          p.fill(skinColor[0], skinColor[1], skinColor[2]);
-          p.noStroke();
-          p.ellipse(0, -30, 28, 35); // Head
-          
-          // Eyes
           p.fill(50);
-          p.ellipse(-6, -32, 4, 5);
-          p.ellipse(6, -32, 4, 5);
-          
-          // Smile
-          p.noFill();
-          p.stroke(50);
-          p.strokeWeight(2);
-          p.arc(0, -25, 12, 8, 0, p.PI);
-          
-          // Hair
-          p.noStroke();
-          p.fill(60, 40, 20);
-          p.arc(0, -38, 26, 20, p.PI, p.TWO_PI);
-          
-          // Shirt
-          p.fill(shirtColor[0], shirtColor[1], shirtColor[2]);
-          p.rect(-12, -12, 24, 20, 5);
-          
-          // Legs
-          p.fill(100, 80, 60);
-          p.rect(-10, 8, 8, 15);
-          p.rect(2, 8, 8, 15);
-          
-          // Activity items
-          if (activity === 'read') {
-            p.fill(255);
-            p.stroke(200);
-            p.rect(-10, -5, 20, 15, 2);
-            p.line(-5, -2, -5, 7);
-            p.line(2, -2, 2, 7);
-          } else if (activity === 'computer') {
-            p.fill(150);
-            p.rect(-15, -8, 25, 18, 2);
-            p.fill(100, 150, 200);
-            p.rect(-12, -5, 19, 12);
-          } else if (activity === 'play') {
-            p.fill(255, 200, 50);
-            p.circle(18, -10, 12);
-          }
-          
-          p.pop();
-        }
-        
-        function drawButterfly(p, x, y, frame) {
-          p.push();
-          p.translate(x, y);
-          let wingAngle = p.sin(frame * 0.3) * 0.3;
-          
-          // Wings
-          p.fill(255, 150, 200, 200);
-          p.push();
-          p.rotate(wingAngle);
-          p.ellipse(-10, 0, 20, 12);
-          p.pop();
-          p.push();
-          p.rotate(-wingAngle);
-          p.ellipse(10, 0, 20, 12);
-          p.pop();
-          
-          // Body
-          p.fill(80);
-          p.ellipse(0, 0, 4, 15);
-          p.pop();
-        }
-      };
-      new p5(sketch);
-    }
-
-    // GSAP Animations
-    gsap.from(".hero-text", { duration: 1, x: -80, opacity: 0, ease: "back.out(1.7)" });
-    gsap.from(".hero-media", { duration: 1, scale: 0.9, opacity: 0, delay: 0.2 });
-    
-    gsap.from(".cartoon-canvas-container", { 
-      scrollTrigger: { trigger: ".cartoon-canvas-container", start: "top 80%" }, 
-      duration: 1, y: 50, opacity: 0 
-    });
-    
-    gsap.utils.toArray(".fee-card").forEach((card, i) => {
-      gsap.from(card, { 
-        scrollTrigger: { trigger: card, start: "top 85%" }, 
-        duration: 0.6, y: 40, opacity: 0, delay: i * 0.1 
-      });
-    });
-    
-    gsap.from(".event-table-wrapper", { 
-      scrollTrigger: { trigger: ".event-table-wrapper", start: "top 80%" }, 
-      duration: 1, x: -40, opacity: 0 
-    });
-    
-    gsap.from(".form-card", { 
-      scrollTrigger: { trigger: ".form-card", start: "top 80%" }, 
-      duration: 1, scale: 0.95, opacity: 0 
-    });
-
-    // Form submission
-    const regForm = document.getElementById('registrationForm');
-    const feedback = document.getElementById('formFeedback');
-    
-    if (regForm) {
-      regForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const child = document.getElementById('childName').value.trim();
-        const parent = document.getElementById('parentName').value.trim();
-        const email = document.getElementById('emailReg').value.trim();
-        const fileInput = document.getElementById('receiptUpload');
-        
-        if (!child || !parent || !email) {
-          feedback.innerHTML = "Please fill in Child's Name, Parent Name, and Email Address.";
-          feedback.style.color = "#c0392b";
-          return;
-        }
-        
-        if (fileInput.files.length === 0) {
-          feedback.innerHTML = "Please upload the payment receipt (proof of deposit) to complete registration.";
-          feedback.style.color = "#e67e22";
-          return;
-        }
-        
-        feedback.innerHTML = `Thank you ${parent}! Registration for ${child} received. We'll verify your receipt and contact you at ${email}. Welcome to the leaders' family!`;
-        feedback.style.color = "#2e7d32";
-        
-        // Optional: Reset form after successful submission
-        setTimeout(function() {
-          regForm.reset();
-          feedback.innerHTML = "";
-        }, 5000);
+          p.textSize(16);
+          p.text("Play & Learn", 300, 320);
+        };
       });
     }
 
-    // Enroll button scroll
-    const enrollBtn = document.getElementById('enrollBtn');
-    if (enrollBtn) {
-      enrollBtn.addEventListener('click', function() {
-        const registerSection = document.getElementById('register');
-        if (registerSection) {
-          registerSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    }
+    // 4. Form Handling
+    var form = document.getElementById('registrationForm');
+    var feedback = document.getElementById('formFeedback');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var child = document.getElementById('childName').value;
+      var parent = document.getElementById('parentName').value;
+      var email = document.getElementById('emailReg').value;
+      var file = document.getElementById('receiptUpload').files.length;
 
-    // 3D hover effect for Disney box
-    const disneyBox = document.querySelector('.disney3d-box');
-    if (disneyBox) {
-      disneyBox.addEventListener('mousemove', function(e) {
-        const rect = disneyBox.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        disneyBox.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${y * -8}deg)`;
-      });
-      
-      disneyBox.addEventListener('mouseleave', function() {
-        disneyBox.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
-      });
-    }
+      if(child && parent && email && file > 0) {
+        feedback.innerText = "Success! Registration for " + child + " received. We will contact you at " + email + ".";
+        feedback.style.color = "green";
+      } else {
+        feedback.innerText = "Please fill all required fields and upload the receipt.";
+        feedback.style.color = "red";
+      }
+    });
 
-    // Smooth scroll for nav links
-    document.querySelectorAll('.nav-links a').forEach(function(anchor) {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
+    // 5. Enroll Button
+    document.getElementById('enrollBtn').addEventListener('click', function() {
+      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>
+
 </body>
 </html>
