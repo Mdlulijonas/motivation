@@ -2,680 +2,722 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Motivation for Life ECD | Developing Future Leaders</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <title>Motivation for Life ECD | Premium Early Learning Centre</title>
+
+  <!-- Bootstrap 3 + Fonts + Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
   <style>
+    :root {
+      --kid-red: #FF6B6B;
+      --kid-blue: #4D96FF;
+      --kid-yellow: #FFD93D;
+      --kid-green: #6BCB77;
+      --kid-purple: #C5A3FF;
+      --text-dark: #2c3e50;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Comic Neue', 'Poppins', cursive;
-      background: linear-gradient(145deg, #FFEAA7 0%, #FFD966 100%);
-      color: #2c1a0e;
+      font-family: 'Poppins', sans-serif;
+      background: #FFF9F0;
+      color: var(--text-dark);
       overflow-x: hidden;
-      min-height: 100vh;
     }
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: #ffddb0; border-radius: 20px; }
-    ::-webkit-scrollbar-thumb { background: #ff914d; border-radius: 20px; }
 
-    /* Navbar */
-    .navbar {
-      background: rgba(255, 245, 225, 0.98);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 0.8rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      position: sticky;
+    h1, h2, h3, .navbar-brand, .title {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    /* --- BACKGROUND FUN DRAWINGS --- */
+    .bg-doodles {
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      border-bottom: 4px solid #FF6B6B;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .logo-icon {
-      font-size: 3rem;
-      color: #FF6B6B;
-      background: white;
-      border-radius: 50%;
-      padding: 10px;
-      box-shadow: 4px 4px 0 #FFB7C5;
-    }
-    .logo span {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #e67e22, #f39c12);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.8rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #c25d00;
-      transition: 0.2s;
-      padding: 5px 12px;
-      border-radius: 40px;
-    }
-    .nav-links a:hover {
-      background: #FF6B6B;
-      color: white;
-      transform: scale(1.05);
-    }
-    
-    /* Buttons */
-    .btn-cartoon {
-      background: linear-gradient(135deg, #FF6B6B, #FF8C42);
-      border: none;
-      padding: 12px 28px;
-      font-family: 'Comic Neue', sans-serif;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 60px;
-      color: white;
-      box-shadow: 0 8px 0 #b45f1b;
-      cursor: pointer;
-      transition: 0.1s linear;
-    }
-    .btn-cartoon:active { transform: translateY(4px); box-shadow: 0 4px 0 #b45f1b; }
-    .btn-cartoon:hover { transform: translateY(2px); box-shadow: 0 6px 0 #b45f1b; }
 
-    /* Hero Section */
-    .hero {
+    /* Floating animation for mascot */
+    @keyframes floatMascot {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .floating {
+      animation: floatMascot 4s ease-in-out infinite;
+    }
+
+    /* --- FLOATING CLOUDS (simple, horizontal) --- */
+    .cloud {
+      position: absolute;
+      width: 150px;
+      opacity: 0.7;
+      animation: floatCloud 20s infinite linear;
+      pointer-events: none;
+      z-index: 2;
+    }
+    @keyframes floatCloud {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(120vw); }
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      border: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      padding: 8px 0;
+      backdrop-filter: blur(8px);
+      border-bottom: 4px solid var(--kid-yellow);
+    }
+    .navbar-brand {
+      font-size: 1.7rem;
+      font-weight: 700;
       display: flex;
-      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px;
+      color: var(--text-dark) !important;
+    }
+    .navbar-brand i {
+      color: var(--kid-red);
+      font-size: 1.6rem;
+      margin-right: 6px;
+    }
+    .navbar-nav > li > a {
+      font-weight: 600;
+      transition: 0.2s;
+      border-radius: 30px;
+      margin: 0 5px;
+      font-size: 1rem; /* increased from default */
+    }
+    .navbar-nav > li > a:hover {
+      background: var(--kid-yellow);
+      color: #1e2a3a;
+      transform: translateY(-2px);
+    }
+    .nav-btn {
+      background: var(--kid-blue);
+      color: white !important;
+      border-radius: 40px !important;
+      padding: 8px 22px !important;
+      margin-top: 6px;
+      box-shadow: 0 4px 8px rgba(77,150,255,0.3);
+    }
+    .nav-btn:hover {
+      background: var(--kid-red) !important;
+      transform: translateY(-3px);
+    }
+
+    /* --- HERO SECTION with clear image & floating clouds behind --- */
+    .hero-section {
+      min-height: 92vh;
+      display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 2rem 5%;
-      gap: 2rem;
-      min-height: 70vh;
-    }
-    .hero-media {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      min-width: 300px;
-    }
-    .videoBox {
-      border-radius: 50px;
+      padding-top: 85px;
+      position: relative;
+      background-image: url('https://images.pexels.com/photos/3662663/pexels-photo-3662663.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
       overflow: hidden;
-      box-shadow: 15px 15px 0 #FFB7C5;
-      background: #fff0da;
-      padding: 8px;
     }
-    .videoBox iframe {
+    /* Dark overlay for text readability */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 1;
+    }
+    .hero-section .container {
+      position: relative;
+      z-index: 3;
+    }
+    .hero-text {
+      background: rgba(255, 248, 225, 0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 48px;
+      padding: 25px 35px;
+      display: inline-block;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255,217,61,0.7);
+    }
+
+    /* Typewriter container */
+    .typewriter-area {
+      margin-bottom: 20px;
+    }
+    .typewriter-container {
+      font-family: 'Fredoka', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      display: inline-block;
+    }
+    .typewriter-container span {
+      transition: all 0.1s ease;
+      display: inline-block;
+    }
+    .cursor {
+      display: inline-block;
+      width: 4px;
+      height: 2.2rem;
+      background: var(--kid-red);
+      margin-left: 5px;
+      vertical-align: middle;
+      animation: blink 0.85s step-end infinite;
+      border-radius: 3px;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Buttons */
+    .btn-kids {
+      border-radius: 60px;
+      padding: 14px 35px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      border: 3px solid var(--text-dark);
+      box-shadow: 5px 5px 0 var(--text-dark);
+      transition: all 0.15s linear;
+      font-weight: 700;
+    }
+    .btn-kids:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--text-dark);
+    }
+    .btn-red {
+      background: var(--kid-red);
+      color: white;
+    }
+    .btn-yellow {
+      background: var(--kid-yellow);
+      color: var(--text-dark);
+    }
+
+    /* --- SECTIONS (simplified, using .section) --- */
+    .section {
+      padding: 70px 0;
+      position: relative;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    /* --- PROGRAM CARDS (colored headers) --- */
+    .program-card {
+      background: white;
+      border: 3px solid var(--text-dark);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+      height: 100%;
+    }
+    .program-card:hover {
+      transform: translateY(-10px) rotate(-1deg);
+      box-shadow: 15px 15px 0 rgba(0,0,0,0.1);
+    }
+    .card-header {
+      padding: 20px;
+      border-bottom: 3px solid var(--text-dark);
+      text-align: center;
+      font-weight: 700;
+    }
+    .bg-red .card-header { background: var(--kid-red); color: white; }
+    .bg-blue .card-header { background: var(--kid-blue); color: white; }
+    .bg-yellow .card-header { background: var(--kid-yellow); color: var(--text-dark); }
+    .bg-green .card-header { background: var(--kid-green); color: white; }
+    .price-tag {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 15px 0 5px;
+    }
+    .program-detail {
+      padding: 20px;
+      background: #fef9e6;
+    }
+    .badge-custom {
+      background: #fff0c0;
+      border-radius: 50px;
+      padding: 8px 16px; /* increased padding for larger text */
+      font-size: 0.95rem; /* increased from default small */
+      font-weight: 600;
+      display: inline-block;
+      border: 1px solid var(--text-dark);
+    }
+    .program-detail p {
+      font-size: 1rem; /* increased */
+      margin-bottom: 12px;
+    }
+
+    /* Gallery cards */
+    .gallery-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+    .gallery-card img {
       width: 100%;
       height: 260px;
-      border-radius: 40px;
-      border: none;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
-    .disney3d-box {
-      text-align: center;
-      background: linear-gradient(145deg, #FFE6C4, #FFD7A5);
-      transform-style: preserve-3d;
-      transition: transform 0.4s;
-      border-radius: 50px;
-      padding: 20px;
-      box-shadow: 15px 15px 0 #C5A3FF;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
-    .disney3d-box:hover {
-      transform: rotateY(6deg) rotateX(3deg);
-    }
-    
-    .hero-text {
-      flex: 1;
-      min-width: 280px;
-    }
-    .hero-text h1 {
-      font-size: 3rem;
-      background: linear-gradient(135deg, #FF6B6B, #FF8C42);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    .slogan-badge {
-      background: #FFB7C5;
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
-      font-size: 1.6rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      color: #9B2E1F;
-    }
-
-    /* Canvas Area */
-    .cartoon-canvas-container {
-      background: #FFEAA7;
-      border-radius: 70px;
-      margin: 2rem 5%;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 20px 20px 0 #FFB7C5;
-      min-height: 300px;
-    }
-    canvas {
-      display: block;
-      margin: 0 auto;
-      border-radius: 50px;
-      background: #FFFAF0;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Container & Sections */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 2rem 5%;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      text-align: center;
-      background: #FFD966;
-      display: inline-block;
-      width: auto;
-      padding: 0.3rem 2rem;
-      border-radius: 100px;
-      margin-bottom: 2rem;
-      color: #2c1a0e;
-    }
-    .title-wrap { text-align: center; }
-
-    /* Fee Cards */
-    .fee-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin: 2rem 0;
-    }
-    .fee-card {
-      background: white;
-      border-radius: 60px 30px 60px 30px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 12px 12px 0 #FF6B6B;
-      transition: all 0.2s;
-      border: 3px solid #FFB7C5;
-    }
-    .fee-card:hover {
-      transform: translate(-5px, -5px);
-      box-shadow: 18px 18px 0 #FF8C42;
-    }
-    .fee-card i {
-      font-size: 3rem;
-      background: #ffefcf;
-      padding: 15px;
-      border-radius: 50%;
-      color: #ff6b4a;
-    }
-    .fee-card h3 {
-      font-size: 1.8rem;
-      margin: 0.8rem 0;
-      color: #b64926;
-    }
-    .fee-card .price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #e67e22;
-    }
-    .stationery-badge {
-      background: #fce5b4;
-      border-radius: 30px;
-      padding: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    /* Table */
-    .event-table-wrapper {
-      overflow-x: auto;
-      background: #fff7e8;
-      border-radius: 60px;
-      padding: 1rem;
-      box-shadow: 12px 12px 0 #FFB7C5;
-    }
-    .event-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: 'Comic Neue', monospace;
-    }
-    .event-table th, .event-table td {
-      border: 3px solid #FFB7C5;
-      padding: 12px 10px;
-      text-align: left;
-    }
-    .event-table th {
-      background: #FF6B6B;
-      color: white;
-      font-size: 1.2rem;
+    .gallery-card:hover img {
+      transform: scale(1.05);
     }
 
     /* Form */
-    .form-card {
-      background: #fff2e2;
-      border-radius: 60px;
-      padding: 2rem;
-      box-shadow: 12px 12px 0 #FF6B6B;
-      margin: 2rem 0;
+    .form-container {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-    }
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .form-field label {
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .form-field input, .form-field select {
-      padding: 12px;
-      border-radius: 40px;
-      border: 2px solid #FFB7C5;
-      background: #fffefa;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-    .form-field input:focus, .form-field select:focus {
-      outline: none;
-      border-color: #FF6B6B;
-      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
-    }
-    .full-width { grid-column: span 2; }
-    
-    .bank-details {
-      background: #ffebcd;
-      border-radius: 40px;
-      padding: 1.2rem;
-      margin: 1rem 0;
-      text-align: center;
-      border: 2px dashed #FF6B6B;
-    }
-    
-    /* Contact */
-    .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .contact-card {
-      background: #fff0db;
+    .form-control {
+      border: 2px solid #ddd;
       border-radius: 50px;
-      padding: 1.8rem;
-      flex: 1;
-      min-width: 280px;
-      text-align: center;
+      padding: 12px 20px;
+      font-size: 1rem;
+      transition: 0.2s;
     }
-    
-    /* Footer */
+    .form-control:focus {
+      border-color: var(--kid-blue);
+      box-shadow: 0 0 0 3px rgba(77,150,255,0.2);
+    }
+    .bank-details {
+      background: #fef3cf;
+      border-radius: 28px;
+      padding: 12px 20px;
+      border-left: 10px solid var(--kid-green);
+      text-align: left;
+      font-size: 0.95rem; /* slightly larger */
+    }
+
+    /* Footer Park Scene */
     footer {
-      background: #FFD966;
-      margin-top: 3rem;
-      padding: 2rem;
-      text-align: center;
-      border-top-left-radius: 70px;
-      border-top-right-radius: 70px;
-    }
-    
-    /* Floating BG Shapes */
-    .floating-shapes {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: -1;
+      position: relative;
+      background: transparent;
+      min-height: 480px;
+      margin-top: 30px;
       overflow: hidden;
     }
-    .shape {
+    .park-svg {
       position: absolute;
-      opacity: 0.2;
-      animation: floatShape 20s infinite ease-in-out;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
-    .shape:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-    .shape:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
-    .shape:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 4s; }
-    .shape:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 6s; }
-    
-    @keyframes floatShape {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-30px) rotate(10deg); }
+    .footer-content {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+      padding: 20px;
     }
-    
-    @media (max-width: 800px) {
-      .navbar { flex-direction: column; gap: 1rem; }
-      .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
-      .hero-text h1 { font-size: 2rem; }
-      .section-title { font-size: 1.8rem; }
+    .footer-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    .footer-content p {
+      font-size: 1rem; /* increased */
+    }
+
+    @media (max-width: 768px) {
+      .typewriter-container { font-size: 1.5rem; }
+      .hero-text { padding: 15px 20px; }
+      .title { font-size: 2rem; }
+      .hero-section { min-height: 85vh; }
+      footer { min-height: 380px; }
+      .cloud { width: 100px; }
+      .price-tag { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Floating Background -->
-<div class="floating-shapes">
-  <div class="shape"><svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" fill="#FF6B6B"/></svg></div>
-  <div class="shape"><svg width="50" height="50" viewBox="0 0 50 50"><rect x="10" y="10" width="30" height="30" rx="8" fill="#FFD966"/></svg></div>
-  <div class="shape"><svg width="55" height="55" viewBox="0 0 55 55"><polygon points="27.5,5 50,50 5,50" fill="#FFB7C5"/></svg></div>
-  <div class="shape"><svg width="45" height="45" viewBox="0 0 45 45"><circle cx="22.5" cy="22.5" r="20" fill="#C5A3FF"/></svg></div>
-</div>
+  <!-- BACKGROUND FUN DRAWINGS (balloons, birds, etc) -->
+  <div class="bg-doodles">
+    <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="bgSoft" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#FFF6E5" />
+          <stop offset="100%" stop-color="#FFFAF0" />
+        </linearGradient>
+      </defs>
+      <rect fill="url(#bgSoft)" width="1440" height="900"/>
+      <!-- Balloons -->
+      <circle cx="200" cy="200" r="40" fill="#FF6B6B" opacity="0.5" />
+      <line x1="200" y1="240" x2="200" y2="320" stroke="#777" stroke-width="2" />
+      <circle cx="300" cy="180" r="35" fill="#FFD93D" opacity="0.5" />
+      <line x1="300" y1="215" x2="300" y2="300" stroke="#777" stroke-width="2" />
+      <!-- Birds -->
+      <path d="M600 100 Q620 80 640 100" stroke="#AAA" fill="none" stroke-width="2" />
+      <path d="M650 120 Q670 100 690 120" stroke="#AAA" fill="none" stroke-width="2" />
+      <!-- Flowers -->
+      <circle cx="100" cy="600" r="10" fill="#FFB7C5" opacity="0.6" />
+      <circle cx="120" cy="600" r="10" fill="#FFB7C5" opacity="0.6" />
+    </svg>
+  </div>
 
-<nav class="navbar">
-  <div class="logo">
-    <i class="fas fa-seedling logo-icon"></i>
-    <span>Motivation for Life ECD</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#fees">Fees</a></li>
-    <li><a href="#events">Year Plan</a></li>
-    <li><a href="#register">Register</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- FLOATING CLOUDS (simple horizontal animation) -->
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 10%; left: -100px; width: 130px; animation-duration: 28s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 30%; left: -150px; width: 180px; animation-duration: 35s; animation-delay: 3s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 55%; left: -80px; width: 110px; animation-duration: 22s; animation-delay: 8s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 75%; left: -200px; width: 150px; animation-duration: 40s; animation-delay: 1s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 85%; left: -50px; width: 100px; animation-duration: 25s; animation-delay: 12s;">
 
-<section id="home" class="hero">
-  <div class="hero-media" data-aos="fade-right">
-    <div class="videoBox">
-      <iframe src="https://www.youtube.com/embed/6lFj1H8J2yY" title="Cartoon Video" allowfullscreen loading="lazy"></iframe>
-      <p style="text-align:center; margin-top:8px;"><i class="fas fa-tv"></i> Fun Cartoon Adventures</p>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-seedling"></i> Motivation for Life <span style="font-size:0.7rem;">ECD</span>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#register">Register</a></li>
+          <li><a href="#contact" class="btn nav-btn">Enroll Now</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="disney3d-box" data-aos="flip-up">
-      <!-- Inline SVG (No CORB issues) -->
-      <svg width="180" height="150" viewBox="0 0 200 180" style="max-width: 180px;">
-        <rect x="50" y="70" width="100" height="110" fill="#FFE4E1" stroke="#FF6B6B" stroke-width="3"/>
-        <polygon points="100,10 150,70 50,70" fill="#FFD966" stroke="#FF8C42" stroke-width="2"/>
-        <circle cx="80" cy="100" r="8" fill="#87CEEB"/>
-        <circle cx="120" cy="100" r="8" fill="#87CEEB"/>
-        <rect x="85" y="130" width="30" height="50" rx="15" fill="#C5A3FF"/>
-        <text x="30" y="30" font-size="20" fill="#FFD966">★</text>
-        <text x="160" y="40" font-size="18" fill="#FFB7C5">★</text>
-      </svg>
-      <p style="margin-top:10px; font-weight:bold;">Magic Castle</p>
-    </div>
-  </div>
-  <div class="hero-text" data-aos="fade-left">
-    <div class="slogan-badge">Developing Future Leaders</div>
-    <h1>Motivation for Life <br> Early Childhood Development</h1>
-    <p style="font-size: 1.2rem; margin: 1rem 0;"><i class="fas fa-star-of-life" style="color:#ff6b6b;"></i> Where little hearts grow courage, creativity & leadership!</p>
-    <button class="btn-cartoon" id="enrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now</button>
-  </div>
-</section>
+  </nav>
 
-<div class="cartoon-canvas-container" data-aos="zoom-in">
-  <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Our Happy Cartoon World</h2>
-  <div id="cartoon-sketch"></div>
-</div>
-
-<section id="fees" class="container">
-  <div class="title-wrap">
-    <h2 class="section-title" style="background:#FFB7C5;">Fee Structure 2026</h2>
-  </div>
-  <div class="fee-grid">
-    <div class="fee-card" data-aos="zoom-in">
-      <i class="fas fa-file-signature"></i>
-      <h3>Registration</h3>
-      <div class="price">R250</div>
-    </div>
-    <div class="fee-card" data-aos="zoom-in" data-aos-delay="50">
-      <i class="fas fa-redo-alt"></i>
-      <h3>Re-registration</h3>
-      <div class="price">R150</div>
-    </div>
-    <div class="fee-card" data-aos="zoom-in" data-aos-delay="100">
-      <i class="fas fa-id-card"></i>
-      <h3>Student Card</h3>
-      <div class="price">R250</div>
-    </div>
-  </div>
-  <div class="fee-grid">
-    <div class="fee-card" data-aos="flip-left">
-      <i class="fas fa-baby-carriage"></i>
-      <h3>0 - 2 Years</h3>
-      <div class="price">R800 / m</div>
-      <div class="stationery-badge">Stationery: R300</div>
-    </div>
-    <div class="fee-card" data-aos="flip-left" data-aos-delay="50">
-      <i class="fas fa-child"></i>
-      <h3>2 - 3 Years</h3>
-      <div class="price">R700 / m</div>
-      <div class="stationery-badge">Stationery: R300</div>
-    </div>
-    <div class="fee-card" data-aos="flip-left" data-aos-delay="100">
-      <i class="fas fa-puzzle-piece"></i>
-      <h3>3 - 4 Years</h3>
-      <div class="price">R600 / m</div>
-      <div class="stationery-badge">Stationery: R450</div>
-    </div>
-    <div class="fee-card" data-aos="flip-left" data-aos-delay="150">
-      <i class="fas fa-graduation-cap"></i>
-      <h3>Grade R</h3>
-      <div class="price">R800 / m</div>
-      <div class="stationery-badge">Graduation Included!</div>
-    </div>
-  </div>
-</section>
-
-<section id="events" class="container">
-  <div class="title-wrap">
-    <h2 class="section-title" style="background:#C5A3FF;">2026 Events Calendar</h2>
-  </div>
-  <div class="event-table-wrapper" data-aos="fade-up">
-    <table class="event-table">
-      <thead>
-        <tr>
-          <th>Date</th><th>Event</th><th>Time</th><th>Dress Code</th><th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>15 May</td><td>Little Leaders Gala</td><td>09:00 - 12:00</td><td>Formal / Superhero</td><td>R150</td></tr>
-        <tr><td>12 June</td><td>Creativity Carnival</td><td>10:00 - 13:00</td><td>Casual (Paint-friendly)</td><td>R80</td></tr>
-        <tr><td>28 Aug</td><td>Entrepreneurs Day</td><td>09:30 - 14:00</td><td>Smart Casual</td><td>R120</td></tr>
-        <tr><td>20 Nov</td><td>Year End Ceremony</td><td>10:00 - 13:30</td><td>Party / Disney</td><td>R200</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="register" class="container">
-  <div class="title-wrap">
-    <h2 class="section-title" style="background:#FF6B6B; color:white;">Register Now</h2>
-  </div>
-  <div class="form-card" data-aos="fade-up">
-    <h3 style="text-align:center; margin-bottom: 1.5rem;">Admission Form</h3>
-    <form id="registrationForm">
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="childName">Child's Full Name *</label>
-          <!-- Standard autocomplete values used below -->
-          <input type="text" id="childName" name="childName" required autocomplete="name">
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="hero-text">
+            <div class="typewriter-area">
+              <div id="typewriter" class="typewriter-container"></div>
+              <span class="cursor" id="cursor"></span>
+            </div>
+            <p style="font-size: 1.2rem; margin-top: 20px; font-weight:500;">
+              🌟 A safe, loving, and creative environment where little minds bloom through play and purpose.
+            </p>
+            <div class="row" style="margin-top: 20px;">
+              <div class="col-xs-6">
+                <a href="#register" class="btn btn-kids btn-red btn-block"><i class="fas fa-star"></i> Enroll Today</a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#programs" class="btn btn-kids btn-yellow btn-block">Our Programs</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-field">
-          <label for="childDob">Child's Date of Birth</label>
-          <input type="date" id="childDob" name="childDob">
-        </div>
-        <div class="form-field">
-          <label for="parentName">Parent/Guardian Name *</label>
-          <input type="text" id="parentName" name="parentName" required autocomplete="name">
-        </div>
-        <div class="form-field">
-          <label for="emailReg">Email Address *</label>
-          <input type="email" id="emailReg" name="emailReg" required autocomplete="email">
-        </div>
-        <div class="form-field">
-          <label for="phoneReg">Phone Number</label>
-          <input type="tel" id="phoneReg" name="phoneReg" autocomplete="tel">
-        </div>
-        <div class="form-field">
-          <label for="address">Address</label>
-          <input type="text" id="address" name="address" autocomplete="street-address">
-        </div>
-        <div class="form-field full-width">
-          <label for="receiptUpload">Upload Payment Receipt *</label>
-          <!-- Removed non-standard autocomplete attribute completely -->
-          <input type="file" id="receiptUpload" name="receiptUpload" accept="image/*,.pdf" required>
+        <div class="col-md-4 hidden-sm hidden-xs text-center">
+          <svg viewBox="0 0 200 200" width="250" height="250" class="floating">
+            <circle cx="100" cy="100" r="95" fill="#FFD93D" stroke="#2D2D2D" stroke-width="4"/>
+            <circle cx="100" cy="105" r="70" fill="#FFE0B2"/>
+            <path d="M30,80 Q30,20 100,30 Q170,20 170,80" fill="#5D4037" stroke="#2D2D2D" stroke-width="2"/>
+            <circle cx="75" cy="100" r="10" fill="#2D2D2D"/>
+            <circle cx="125" cy="100" r="10" fill="#2D2D2D"/>
+            <path d="M70,130 Q100,160 130,130" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"/>
+            <text x="100" y="185" text-anchor="middle" font-size="20" fill="#FF6B6B" font-weight="bold">🎈</text>
+          </svg>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS SECTION (colored headers) -->
+  <section id="programs" class="section">
+    <div class="container">
+      <h2 class="title">✨ Our Magical Programs ✨</h2>
+      <div class="row">
+        <div class="col-sm-6 col-lg-3">
+          <div class="program-card bg-red">
+            <div class="card-header"><h3>🐣 Little Sprouts</h3><small>0 – 2 Years</small></div>
+            <div class="program-detail">
+              <div class="price-tag" style="color:var(--kid-red);">R800 <span style="font-size:1rem;">/month</span></div>
+              <p>Nurturing, sensory play & bonding.</p>
+              <span class="badge-custom"><i class="fas fa-check"></i> Starter kit R300</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="program-card bg-blue">
+            <div class="card-header"><h3>🎨 Curious Cubs</h3><small>2 – 3 Years</small></div>
+            <div class="program-detail">
+              <div class="price-tag" style="color:var(--kid-blue);">R700</div>
+              <p>Social skills & creative expression</p>
+              <span class="badge-custom"><i class="fas fa-paintbrush"></i> Art supplies incl.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="program-card bg-yellow">
+            <div class="card-header"><h3>📚 Pre‑Grade R</h3><small>3 – 4 Years</small></div>
+            <div class="program-detail">
+              <div class="price-tag" style="color:#E5A500;">R600</div>
+              <p>Early literacy & numeracy fun</p>
+              <span class="badge-custom"><i class="fas fa-book"></i> Learning pack R450</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="program-card bg-green">
+            <div class="card-header"><h3>🎓 Grade R Explorers</h3><small>5 – 6 Years</small></div>
+            <div class="program-detail">
+              <div class="price-tag" style="color:var(--kid-green);">R800</div>
+              <p>School readiness & confidence</p>
+              <span class="badge-custom"><i class="fas fa-graduation-cap"></i> Graduation included</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION (fixed image) -->
+  <section id="gallery" class="section" style="background: #FFF8E7;">
+    <div class="container">
+      <h2 class="title">📸 Fun & Learning Moments</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="gallery-card">
+            <img src="https://images.pexels.com/photos/3661343/pexels-photo-3661343.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop" alt="Creative art">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=450&fit=crop" alt="Outdoor play">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&h=450&fit=crop" alt="Group fun">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER SECTION -->
+  <section id="register" class="section">
+    <div class="container">
+      <h2 class="title">📝 Register Your Child</h2>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="form-container">
+            <form id="registrationForm">
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Child's Full Name</label>
+                <input type="text" class="form-control input-lg" placeholder="e.g. Lily Jacobs" required>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Parent Email</label>
+                <input type="email" class="form-control input-lg" placeholder="hello@family.com" required>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-phone-alt"></i> Contact Number</label>
+                <input type="tel" class="form-control input-lg" placeholder="+27 82 123 4567" required>
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-cloud-upload-alt"></i> Upload Proof of Payment / Receipt</label>
+                <input type="file" class="form-control" style="border: 2px dashed var(--kid-blue); padding: 8px;" required>
+              </div>
+              <div class="bank-details">
+                <i class="fas fa-university"></i> <strong>Bank Transfer Details</strong><br>
+                <small>Bank: FNB | Acc: 62687046097 | Branch: 250655 | Ref: ChildName_ECD</small>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-kids btn-red btn-block btn-lg">✅ Submit Application</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER with PARK SCENE -->
+  <footer id="contact">
+    <svg class="park-svg" viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="skyGradFooter" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#F9D56E" />
+          <stop offset="100%" stop-color="#A3DDED" />
+        </linearGradient>
+      </defs>
+      <rect fill="url(#skyGradFooter)" width="1440" height="480"/>
+      <circle cx="1300" cy="70" r="55" fill="#FFB347"/>
+      <g fill="#FFE084" opacity="0.5"><circle cx="1300" cy="70" r="75" /></g>
+      <g fill="#FFFFFFE6">
+        <ellipse cx="220" cy="55" rx="75" ry="40"/>
+        <ellipse cx="300" cy="70" rx="55" ry="32"/>
+        <ellipse cx="1150" cy="85" rx="85" ry="42"/>
+      </g>
+      <path d="M0,300 L0,380 Q300,230 620,340 T1140,280 L1440,260 L1440,480 L0,480 Z" fill="#6BCB77"/>
+      <path d="M0,340 L0,420 Q280,280 590,380 T1220,340 L1440,320 L1440,480 L0,480 Z" fill="#4CAF50"/>
+      <g transform="translate(100, 240)">
+        <rect x="22" y="65" width="26" height="85" fill="#8B5A2B"/>
+        <circle cx="35" cy="40" r="50" fill="#2E7D32"/>
+      </g>
+      <g transform="translate(1250, 220)">
+        <rect x="18" y="70" width="28" height="95" fill="#A5673F"/>
+        <circle cx="32" cy="40" r="55" fill="#1B5E20"/>
+      </g>
+      <g transform="translate(500, 260)">
+        <rect x="0" y="0" width="190" height="10" fill="#BD9A7A" rx="5"/>
+        <line x1="25" y1="10" x2="25" y2="150" stroke="#5D4037" stroke-width="8"/>
+        <line x1="165" y1="10" x2="165" y2="150" stroke="#5D4037" stroke-width="8"/>
+        <rect x="80" y="135" width="30" height="12" fill="#FF6B6B" rx="6"/>
+      </g>
+      <g transform="translate(950, 200)">
+        <rect x="8" y="0" width="14" height="170" fill="#FF9F4A"/>
+        <rect x="75" y="0" width="14" height="170" fill="#FF9F4A"/>
+        <path d="M82,155 L82,168 L210,240 L210,215 Z" fill="#E76F51"/>
+      </g>
+      <polygon points="900,120 940,80 980,120 940,200" fill="#FFB7B2" opacity="0.8"/>
+    </svg>
+    <div class="footer-content">
+      <h3><i class="fas fa-heart"></i> Motivation for Life ECD</h3>
+      <p>Building Future Leaders with Love, Play & Purpose ❤️ | © 2025</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Sunshine Blvd, Cape Town | <i class="fas fa-phone"></i> +27 82 765 4321</p>
+    </div>
+  </footer>
+
+  <!-- jQuery & Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // ===== INFINITE LOOP TYPEWRITER (type, delete, repeat) =====
+      const wordsArray = [
+        { text: "PARENTS", color: "#FF6B6B" },
+        { text: "WELCOME", color: "#4D96FF" },
+        { text: "TO", color: "#FFD93D" },
+        { text: "MOTIVATION", color: "#6BCB77" },
+        { text: "FOR", color: "#C5A3FF" },
+        { text: "LIFE", color: "#FF6B6B" },
+        { text: "ECD", color: "#4D96FF" }
+      ];
       
-      <div class="bank-details">
-        <strong>Bank: FNB | Acc: 62687046097 | Motivation for Life ECD</strong><br>
-        <small>Email: motivationforlife581@gmail.com</small>
-      </div>
-      
-      <div style="text-align: center; margin-top: 1rem;">
-        <button type="submit" class="btn-cartoon">Submit Registration</button>
-      </div>
-    </form>
-    <p id="formFeedback" style="text-align:center; margin-top:1rem; font-weight:bold;"></p>
-  </div>
-</section>
-
-<section id="contact" class="container">
-  <div class="title-wrap">
-    <h2 class="section-title">Contact Us</h2>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-card" data-aos="flip-left">
-      <i class="fas fa-piggy-bank" style="font-size: 2.5rem; color:#ff914d;"></i>
-      <h3>Banking Details</h3>
-      <p><strong>FNB</strong><br>Acc: 62687046097<br>Branch: 250655</p>
-    </div>
-    <div class="contact-card" data-aos="flip-right">
-      <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color:#ff914d;"></i>
-      <h3>Location</h3>
-      <p>Winterveld, via Paving Road<br>Pretoria, South Africa<br>Mon-Fri: 7:00 - 17:30</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>2026 Motivation for Life ECD | Developing Future Leaders</p>
-</footer>
-
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Initialize AOS
-    AOS.init({ duration: 800, once: true, offset: 100 });
-
-    // 2. Initialize GSAP
-    if (typeof gsap !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.from(".hero-text", { duration: 1, x: -50, opacity: 0 });
-      gsap.from(".hero-media", { duration: 1, x: 50, opacity: 0, delay: 0.2 });
-    }
-
-    // 3. Initialize p5.js (Simplified for stability)
-    if (typeof p5 !== 'undefined') {
-      new p5(function(p) {
-        p.setup = function() {
-          var canvas = p.createCanvas(700, 350);
-          canvas.parent('cartoon-sketch');
-          p.noStroke();
-        };
-        p.draw = function() {
-          p.background(255, 250, 230);
-          
-          // Simple Sun
-          p.fill(255, 200, 50);
-          p.circle(600, 60, 60);
-          
-          // Simple Clouds
-          p.fill(255);
-          p.ellipse(100, 50, 60, 40);
-          p.ellipse(130, 40, 50, 30);
-          
-          // Ground
-          p.fill(180, 230, 180);
-          p.rect(0, 280, 700, 70);
-          
-          // Moving Ball
-          var ballX = (p.frameCount * 2) % 750;
-          p.fill(255, 100, 100);
-          p.circle(ballX - 25, 260, 25);
-          
-          // Simple Kid 1
-          p.fill(255, 220, 180); // Skin
-          p.circle(150, 250, 30); // Head
-          p.fill(100, 150, 255); // Shirt
-          p.rect(138, 265, 25, 30, 5); // Body
-          
-          // Simple Kid 2
-          p.fill(255, 200, 150);
-          p.circle(500, 250, 30);
-          p.fill(255, 100, 150);
-          p.rect(488, 265, 25, 30, 5);
-          
-          p.fill(50);
-          p.textSize(16);
-          p.text("Play & Learn", 300, 320);
-        };
+      let $container = $('#typewriter');
+      // Build character map with colors
+      let fullCharMap = [];
+      wordsArray.forEach((word, idx) => {
+        for (let c of word.text) {
+          fullCharMap.push({ char: c, color: word.color });
+        }
+        if (idx !== wordsArray.length - 1) {
+          fullCharMap.push({ char: ' ', color: '#333' });
+        }
       });
-    }
 
-    // 4. Form Handling
-    var form = document.getElementById('registrationForm');
-    var feedback = document.getElementById('formFeedback');
-    
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var child = document.getElementById('childName').value;
-      var parent = document.getElementById('parentName').value;
-      var email = document.getElementById('emailReg').value;
-      var file = document.getElementById('receiptUpload').files.length;
+      let currentLength = 0;
+      let typingTimeout = null;
+      let loopActive = true;
 
-      if(child && parent && email && file > 0) {
-        feedback.innerText = "Success! Registration for " + child + " received. We will contact you at " + email + ".";
-        feedback.style.color = "green";
-      } else {
-        feedback.innerText = "Please fill all required fields and upload the receipt.";
-        feedback.style.color = "red";
+      function updateDisplay() {
+        $container.empty();
+        for (let i = 0; i < currentLength; i++) {
+          let item = fullCharMap[i];
+          let $span = $('<span>').css('color', item.color).text(item.char);
+          $container.append($span);
+        }
       }
-    });
 
-    // 5. Enroll Button
-    document.getElementById('enrollBtn').addEventListener('click', function() {
-      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
+      function typeNext() {
+        if (!loopActive) return;
+        if (currentLength < fullCharMap.length) {
+          currentLength++;
+          updateDisplay();
+          typingTimeout = setTimeout(typeNext, 70);
+        } else {
+          typingTimeout = setTimeout(startDelete, 1800);
+        }
+      }
 
+      function startDelete() {
+        if (!loopActive) return;
+        if (currentLength > 0) {
+          currentLength--;
+          updateDisplay();
+          typingTimeout = setTimeout(startDelete, 45);
+        } else {
+          typingTimeout = setTimeout(() => { typeNext(); }, 300);
+        }
+      }
+
+      setTimeout(() => { typeNext(); }, 400);
+      
+      // ===== FORM SUBMISSION =====
+      $('#registrationForm').on('submit', function(e) {
+        e.preventDefault();
+        let childName = $(this).find('input[placeholder*="Child"]').val() || "little star";
+        const $notify = $('<div>').css({
+          position: 'fixed',
+          bottom: '30px',
+          right: '25px',
+          background: 'linear-gradient(125deg, #6BCB77, #4D96FF)',
+          color: 'white',
+          padding: '14px 28px',
+          borderRadius: '50px',
+          fontWeight: 'bold',
+          zIndex: 9999,
+          boxShadow: '0 15px 25px rgba(0,0,0,0.2)',
+          fontFamily: 'Fredoka',
+          fontSize: '1.1rem'
+        }).html(`<i class="fas fa-check-circle"></i> 🎉 ${childName} enrolled! We'll contact you soon.`);
+        $('body').append($notify);
+        setTimeout(() => $notify.fadeOut(600, function(){ $(this).remove(); }), 3500);
+        this.reset();
+      });
+      
+      // Smooth scroll for anchors
+      $('a[href*="#"]:not([href="#"])').click(function(e) {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+          let target = $(this.hash);
+          if (target.length) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: target.offset().top - 70 }, 700, 'swing');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
