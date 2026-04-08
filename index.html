@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <title>Motivation for Life ECD | Premium Early Learning Centre</title>
+  <title>Motivation for Life ECD | Bright & Playful Learning</title>
 
   <!-- Bootstrap 3 + Fonts + Icons -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Animation Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@theatre/core@0.7.0/dist/theatre.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     :root {
@@ -17,6 +23,8 @@
       --kid-yellow: #FFD93D;
       --kid-green: #6BCB77;
       --kid-purple: #C5A3FF;
+      --kid-orange: #FFB347;
+      --kid-pink: #FFB7C5;
       --text-dark: #2c3e50;
     }
 
@@ -28,36 +36,28 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #FFF9F0;
+      background: linear-gradient(145deg, #FFF9E6 0%, #FFE6C7 100%);
       color: var(--text-dark);
       overflow-x: hidden;
-      font-size: 18px;
-      line-height: 1.5;
     }
 
     h1, h2, h3, .navbar-brand, .title {
       font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
     }
 
-    /* --- BACKGROUND FUN DRAWINGS --- */
-    .bg-doodles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
+    /* --- FLOATING CARTOON ELEMENTS (everywhere) --- */
+    .cartoon-float {
+      position: absolute;
       pointer-events: none;
+      z-index: 10;
+      font-size: 2.5rem;
+      animation: floatAround 8s infinite ease-in-out;
     }
-
-    /* Floating animation for mascot */
-    @keyframes floatMascot {
+    @keyframes floatAround {
       0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(2deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
       100% { transform: translateY(0px) rotate(0deg); }
-    }
-    .floating {
-      animation: floatMascot 4s ease-in-out infinite;
     }
 
     /* --- FLOATING CLOUDS --- */
@@ -74,7 +74,7 @@
       100% { transform: translateX(120vw); }
     }
 
-    /* --- NAVBAR (fixed mobile menu) --- */
+    /* --- NAVBAR --- */
     .navbar {
       background: rgba(255, 255, 255, 0.96);
       border: none;
@@ -97,7 +97,6 @@
       font-size: 1.8rem;
       margin-right: 6px;
     }
-    /* Make toggle button visible and styled */
     .navbar-toggle {
       border: 2px solid var(--kid-blue);
       background: white;
@@ -109,15 +108,10 @@
       width: 22px;
       height: 3px;
     }
-    .navbar-toggle:hover, .navbar-toggle:focus {
-      background-color: var(--kid-yellow);
-    }
-    /* Mobile menu items */
     .navbar-collapse {
       background: white;
       border-radius: 0 0 20px 20px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      padding: 10px 0;
     }
     .navbar-nav > li > a {
       font-weight: 600;
@@ -129,7 +123,6 @@
     }
     .navbar-nav > li > a:hover {
       background: var(--kid-yellow);
-      color: #1e2a3a;
       transform: translateY(-2px);
     }
     .nav-btn {
@@ -139,83 +132,33 @@
       padding: 8px 22px !important;
       margin-top: 6px;
       box-shadow: 0 4px 8px rgba(77,150,255,0.3);
-      display: inline-block;
-      text-align: center;
     }
     .nav-btn:hover {
       background: var(--kid-red) !important;
-      transform: translateY(-3px);
-    }
-    /* Ensure mobile menu items are easy to tap */
-    @media (max-width: 768px) {
-      .navbar-nav {
-        margin: 0;
-      }
-      .navbar-nav > li {
-        margin: 5px 0;
-      }
-      .navbar-nav > li > a {
-        font-size: 1.2rem;
-        padding: 12px 20px;
-        text-align: center;
-      }
-      .nav-btn {
-        margin: 10px auto;
-        width: 80%;
-        text-align: center;
-      }
     }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO SECTION with animated header --- */
     .hero-section {
       min-height: 92vh;
       display: flex;
       align-items: center;
       padding-top: 85px;
       position: relative;
-      background-image: url('https://images.pexels.com/photos/3662663/pexels-photo-3662663.jpeg?auto=compress&cs=tinysrgb&w=1600');
-      background-size: cover;
-      background-position: center 30%;
-      background-repeat: no-repeat;
+      background: linear-gradient(135deg, #FFE0B5, #FFB7C5);
       overflow: hidden;
     }
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.35);
-      z-index: 1;
-    }
-    .hero-section .container {
-      position: relative;
-      z-index: 3;
-    }
     .hero-text {
-      background: rgba(255, 248, 225, 0.88);
+      background: rgba(255, 248, 225, 0.92);
       backdrop-filter: blur(6px);
       border-radius: 48px;
       padding: 30px 40px;
-      display: inline-block;
       box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-      border: 2px solid rgba(255,217,61,0.7);
-    }
-
-    /* Typewriter container */
-    .typewriter-area {
-      margin-bottom: 20px;
+      border: 2px solid var(--kid-yellow);
     }
     .typewriter-container {
       font-family: 'Fredoka', monospace;
       font-size: 2.6rem;
       font-weight: 700;
-      line-height: 1.3;
-      display: inline-block;
-    }
-    .typewriter-container span {
-      transition: all 0.1s ease;
       display: inline-block;
     }
     .cursor {
@@ -226,11 +169,9 @@
       margin-left: 5px;
       vertical-align: middle;
       animation: blink 0.85s step-end infinite;
-      border-radius: 3px;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 
-    /* Buttons */
     .btn-kids {
       border-radius: 60px;
       padding: 16px 40px;
@@ -245,29 +186,29 @@
       transform: translate(2px, 2px);
       box-shadow: 2px 2px 0 var(--text-dark);
     }
-    .btn-red {
-      background: var(--kid-red);
-      color: white;
-    }
-    .btn-yellow {
-      background: var(--kid-yellow);
-      color: var(--text-dark);
-    }
+    .btn-red { background: var(--kid-red); color: white; }
+    .btn-yellow { background: var(--kid-yellow); color: var(--text-dark); }
 
-    /* --- SECTIONS --- */
+    /* Sections */
     .section {
       padding: 80px 0;
-      position: relative;
     }
     .title {
       text-align: center;
       margin-bottom: 50px;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 3.2rem;
-      font-weight: 700;
+      font-size: 3rem;
+    }
+    .title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--kid-red);
+      margin: 15px auto 0;
+      border-radius: 2px;
     }
 
-    /* --- PROGRAM CARDS --- */
+    /* Program Cards */
     .program-card {
       background: white;
       border: 3px solid var(--text-dark);
@@ -279,52 +220,19 @@
       height: 100%;
     }
     .program-card:hover {
-      transform: translateY(-10px) rotate(-1deg);
+      transform: translateY(-10px);
       box-shadow: 15px 15px 0 rgba(0,0,0,0.1);
     }
     .card-header {
-      padding: 24px;
+      padding: 20px;
       border-bottom: 3px solid var(--text-dark);
       text-align: center;
-      font-weight: 700;
     }
-    .card-header h3 {
-      font-size: 1.8rem;
-      margin: 0;
-    }
-    .card-header small {
-      font-size: 1rem;
-      display: block;
-      margin-top: 6px;
-    }
-    .bg-red .card-header { background: var(--kid-red); color: white; }
-    .bg-blue .card-header { background: var(--kid-blue); color: white; }
-    .bg-yellow .card-header { background: var(--kid-yellow); color: var(--text-dark); }
-    .bg-green .card-header { background: var(--kid-green); color: white; }
-    .price-tag {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin: 15px 0 5px;
-    }
-    .program-detail {
-      padding: 24px;
-      background: #fef9e6;
-    }
-    .badge-custom {
-      background: #fff0c0;
-      border-radius: 50px;
-      padding: 10px 18px;
-      font-size: 1rem;
-      font-weight: 600;
-      display: inline-block;
-      border: 1px solid var(--text-dark);
-    }
-    .program-detail p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
+    .card-header h3 { font-size: 1.6rem; margin: 0; }
+    .price-tag { font-size: 1.8rem; font-weight: 800; margin: 15px 0; }
+    .program-detail { padding: 20px; background: #fef9e6; }
 
-    /* Gallery cards */
+    /* Gallery */
     .gallery-card {
       border-radius: 20px;
       overflow: hidden;
@@ -338,46 +246,63 @@
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-    .gallery-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
     .gallery-card:hover img {
       transform: scale(1.05);
+    }
+
+    /* Parent Resources - Download Cards */
+    .download-card {
+      background: white;
+      border-radius: 40px;
+      padding: 1.8rem;
+      text-align: center;
+      transition: 0.3s;
+      border: 3px solid var(--kid-orange);
+      height: 100%;
+      box-shadow: 8px 8px 0 var(--kid-yellow);
+    }
+    .download-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 12px 12px 0 var(--kid-red);
+    }
+    .download-icon {
+      font-size: 3rem;
+      color: var(--kid-red);
+      margin-bottom: 1rem;
+    }
+    .student-input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 50px;
+      border: 2px solid var(--kid-blue);
+      margin: 12px 0;
+      text-align: center;
     }
 
     /* Form */
     .form-container {
       background: white;
-      padding: 50px;
+      padding: 40px;
       border-radius: 35px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     .form-control {
       border: 2px solid #ddd;
       border-radius: 50px;
-      padding: 14px 24px;
-      font-size: 1rem;
-      transition: 0.2s;
-    }
-    .form-control:focus {
-      border-color: var(--kid-blue);
-      box-shadow: 0 0 0 3px rgba(77,150,255,0.2);
+      padding: 12px 20px;
     }
     .bank-details {
       background: #fef3cf;
       border-radius: 28px;
-      padding: 15px 25px;
+      padding: 15px 20px;
       border-left: 10px solid var(--kid-green);
-      text-align: left;
-      font-size: 1rem;
     }
 
-    /* Footer Park Scene */
+    /* Footer with cartoon images */
     footer {
       position: relative;
       background: transparent;
-      min-height: 520px;
+      min-height: 480px;
       margin-top: 30px;
       overflow: hidden;
     }
@@ -397,162 +322,46 @@
       z-index: 2;
       text-align: center;
       color: white;
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
       padding: 20px;
     }
-    .footer-content h3 {
-      font-size: 2.2rem;
-      font-weight: 700;
+    .footer-cartoon {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      width: 100px;
+      z-index: 3;
+      animation: floatMascot 3s ease-in-out infinite;
     }
-    .footer-content p {
-      font-size: 1.1rem;
-    }
-
-    /* Responsive adjustments for all devices */
-    @media (max-width: 992px) {
-      body {
-        font-size: 17px;
-      }
-      .title {
-        font-size: 2.8rem;
-      }
-      .hero-text {
-        padding: 25px 30px;
-      }
-      .typewriter-container {
-        font-size: 2.2rem;
-      }
-      .cursor {
-        height: 2.2rem;
-      }
-      .gallery-card img {
-        height: 280px;
-      }
+    @keyframes floatMascot {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
 
     @media (max-width: 768px) {
-      body {
-        font-size: 16px;
-      }
-      .navbar-brand {
-        font-size: 1.5rem;
-      }
-      .hero-section {
-        min-height: 85vh;
-        padding-top: 70px;
-      }
-      .hero-text {
-        padding: 20px 25px;
-      }
-      .typewriter-container {
-        font-size: 1.8rem;
-      }
-      .cursor {
-        height: 1.8rem;
-      }
-      .title {
-        font-size: 2.2rem;
-      }
-      .section {
-        padding: 60px 0;
-      }
-      .card-header h3 {
-        font-size: 1.5rem;
-      }
-      .price-tag {
-        font-size: 2rem;
-      }
-      .program-detail p,
-      .badge-custom {
-        font-size: 0.95rem;
-      }
-      .gallery-card img {
-        height: 240px;
-      }
-      .form-container {
-        padding: 30px 25px;
-      }
-      footer {
-        min-height: 420px;
-      }
-      .footer-content h3 {
-        font-size: 1.8rem;
-      }
-      .footer-content p {
-        font-size: 1rem;
-      }
-      .cloud {
-        width: 100px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-text {
-        width: 100%;
-        padding: 15px 20px;
-      }
-      .btn-kids {
-        padding: 12px 20px;
-        font-size: 1.1rem;
-      }
-      .title {
-        font-size: 1.8rem;
-      }
-      .card-header h3 {
-        font-size: 1.3rem;
-      }
-      .program-detail p,
-      .badge-custom {
-        font-size: 0.9rem;
-      }
-      .gallery-card img {
-        height: 200px;
-      }
-      .footer-content {
-        bottom: 20px;
-        padding: 10px;
-      }
-      .footer-content h3 {
-        font-size: 1.5rem;
-      }
+      .typewriter-container { font-size: 1.6rem; }
+      .cursor { height: 1.6rem; }
+      .title { font-size: 2rem; }
+      .section { padding: 50px 0; }
+      .footer-cartoon { width: 70px; bottom: 10px; right: 10px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- BACKGROUND FUN DRAWINGS -->
-  <div class="bg-doodles">
-    <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="bgSoft" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#FFF6E5" />
-          <stop offset="100%" stop-color="#FFFAF0" />
-        </linearGradient>
-      </defs>
-      <rect fill="url(#bgSoft)" width="1440" height="900"/>
-      <!-- Balloons -->
-      <circle cx="200" cy="200" r="40" fill="#FF6B6B" opacity="0.5" />
-      <line x1="200" y1="240" x2="200" y2="320" stroke="#777" stroke-width="2" />
-      <circle cx="300" cy="180" r="35" fill="#FFD93D" opacity="0.5" />
-      <line x1="300" y1="215" x2="300" y2="300" stroke="#777" stroke-width="2" />
-      <!-- Birds -->
-      <path d="M600 100 Q620 80 640 100" stroke="#AAA" fill="none" stroke-width="2" />
-      <path d="M650 120 Q670 100 690 120" stroke="#AAA" fill="none" stroke-width="2" />
-      <!-- Flowers -->
-      <circle cx="100" cy="600" r="10" fill="#FFB7C5" opacity="0.6" />
-      <circle cx="120" cy="600" r="10" fill="#FFB7C5" opacity="0.6" />
-    </svg>
-  </div>
+  <!-- FLOATING CARTOONS EVERYWHERE -->
+  <div class="cartoon-float" style="top: 15%; left: 5%; animation-duration: 7s;">🐘</div>
+  <div class="cartoon-float" style="top: 45%; right: 3%; animation-duration: 9s;">🦒</div>
+  <div class="cartoon-float" style="bottom: 20%; left: 8%; animation-duration: 6s;">🐧</div>
+  <div class="cartoon-float" style="top: 70%; right: 10%; animation-duration: 8s;">🦁</div>
+  <div class="cartoon-float" style="top: 85%; left: 15%; animation-duration: 5s;">🐻‍❄️</div>
 
   <!-- FLOATING CLOUDS -->
-  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 10%; left: -100px; width: 130px; animation-duration: 28s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 30%; left: -150px; width: 180px; animation-duration: 35s; animation-delay: 3s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 55%; left: -80px; width: 110px; animation-duration: 22s; animation-delay: 8s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 75%; left: -200px; width: 150px; animation-duration: 40s; animation-delay: 1s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 85%; left: -50px; width: 100px; animation-duration: 25s; animation-delay: 12s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 10%; left: -100px; width: 120px; animation-duration: 28s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" class="cloud" style="top: 30%; left: -150px; width: 160px; animation-duration: 35s; animation-delay: 3s;">
 
-  <!-- NAVBAR (fixed mobile menu) -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -563,13 +372,14 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          <i class="fas fa-seedling"></i> Motivation for Life <span style="font-size:0.7rem;">ECD</span>
+          <i class="fas fa-seedling"></i> Motivation for Life ECD
         </a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#programs">Programs</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#resources">Resources</a></li>
           <li><a href="#register">Register</a></li>
           <li><a href="#contact" class="btn nav-btn">Enroll Now</a></li>
         </ul>
@@ -577,37 +387,31 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (animated with anime.js) -->
   <section class="hero-section">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <div class="hero-text">
+        <div class="col-md-7">
+          <div class="hero-text animate__animated animate__bounceInLeft">
             <div class="typewriter-area">
               <div id="typewriter" class="typewriter-container"></div>
-              <span class="cursor" id="cursor"></span>
+              <span class="cursor"></span>
             </div>
-            <p style="font-size: 1.3rem; margin-top: 20px; font-weight:500;">
-              🌟 A safe, loving, and creative environment where little minds bloom through play and purpose.
-            </p>
+            <p style="font-size: 1.2rem; margin-top: 20px;">🌟 A safe, loving, and creative environment where little minds bloom through play and purpose.</p>
             <div class="row" style="margin-top: 20px;">
-              <div class="col-xs-6">
-                <a href="#register" class="btn btn-kids btn-red btn-block"><i class="fas fa-star"></i> Enroll Today</a>
-              </div>
-              <div class="col-xs-6">
-                <a href="#programs" class="btn btn-kids btn-yellow btn-block">Our Programs</a>
-              </div>
+              <div class="col-xs-6"><a href="#register" class="btn-kids btn-red btn-block">⭐ Enroll Today</a></div>
+              <div class="col-xs-6"><a href="#programs" class="btn-kids btn-yellow btn-block">Our Programs</a></div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 hidden-sm hidden-xs text-center">
+        <div class="col-md-5 hidden-sm hidden-xs text-center">
           <svg viewBox="0 0 200 200" width="250" height="250" class="floating">
             <circle cx="100" cy="100" r="95" fill="#FFD93D" stroke="#2D2D2D" stroke-width="4"/>
             <circle cx="100" cy="105" r="70" fill="#FFE0B2"/>
             <path d="M30,80 Q30,20 100,30 Q170,20 170,80" fill="#5D4037" stroke="#2D2D2D" stroke-width="2"/>
             <circle cx="75" cy="100" r="10" fill="#2D2D2D"/>
             <circle cx="125" cy="100" r="10" fill="#2D2D2D"/>
-            <path d="M70,130 Q100,160 130,130" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"/>
+            <path d="M70,130 Q100,160 130,130" fill="none" stroke="#2D2D2D" stroke-width="5"/>
             <text x="100" y="185" text-anchor="middle" font-size="20" fill="#FF6B6B" font-weight="bold">🎈</text>
           </svg>
         </div>
@@ -620,46 +424,10 @@
     <div class="container">
       <h2 class="title">✨ Our Magical Programs ✨</h2>
       <div class="row">
-        <div class="col-sm-6 col-lg-3">
-          <div class="program-card bg-red">
-            <div class="card-header"><h3>🐣 Little Sprouts</h3><small>0 – 2 Years</small></div>
-            <div class="program-detail">
-              <div class="price-tag" style="color:var(--kid-red);">R800 <span style="font-size:1rem;">/month</span></div>
-              <p>Nurturing, sensory play & bonding.</p>
-              <span class="badge-custom"><i class="fas fa-check"></i> Starter kit R300</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="program-card bg-blue">
-            <div class="card-header"><h3>🎨 Curious Cubs</h3><small>2 – 3 Years</small></div>
-            <div class="program-detail">
-              <div class="price-tag" style="color:var(--kid-blue);">R700</div>
-              <p>Social skills & creative expression</p>
-              <span class="badge-custom"><i class="fas fa-paintbrush"></i> Art supplies incl.</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="program-card bg-yellow">
-            <div class="card-header"><h3>📚 Pre‑Grade R</h3><small>3 – 4 Years</small></div>
-            <div class="program-detail">
-              <div class="price-tag" style="color:#E5A500;">R600</div>
-              <p>Early literacy & numeracy fun</p>
-              <span class="badge-custom"><i class="fas fa-book"></i> Learning pack R450</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="program-card bg-green">
-            <div class="card-header"><h3>🎓 Grade R Explorers</h3><small>5 – 6 Years</small></div>
-            <div class="program-detail">
-              <div class="price-tag" style="color:var(--kid-green);">R800</div>
-              <p>School readiness & confidence</p>
-              <span class="badge-custom"><i class="fas fa-graduation-cap"></i> Graduation included</span>
-            </div>
-          </div>
-        </div>
+        <div class="col-sm-6 col-md-3"><div class="program-card bg-red"><div class="card-header"><h3>🐣 Little Sprouts</h3><small>0–2 Years</small></div><div class="program-detail"><div class="price-tag">R800</div><p>Nurturing sensory play</p><span class="badge">Stationery R300</span></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="program-card bg-blue"><div class="card-header"><h3>🎨 Curious Cubs</h3><small>2–3 Years</small></div><div class="program-detail"><div class="price-tag">R700</div><p>Social skills & creativity</p><span class="badge">Stationery R300</span></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="program-card bg-yellow"><div class="card-header"><h3>📚 Pre‑Grade R</h3><small>3–4 Years</small></div><div class="program-detail"><div class="price-tag">R600</div><p>Early literacy & numeracy</p><span class="badge">Stationery R450</span></div></div></div>
+        <div class="col-sm-6 col-md-3"><div class="program-card bg-green"><div class="card-header"><h3>🎓 Grade R</h3><small>5–6 Years</small></div><div class="program-detail"><div class="price-tag">R800</div><p>School readiness</p><span class="badge">Graduation incl.</span></div></div></div>
       </div>
     </div>
   </section>
@@ -669,26 +437,57 @@
     <div class="container">
       <h2 class="title">📸 Fun & Learning Moments</h2>
       <div class="row">
-        <div class="col-md-4">
-          <div class="gallery-card">
-            <img src="https://images.pexels.com/photos/3661343/pexels-photo-3661343.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Creative art">
+        <div class="col-md-4"><div class="gallery-card"><img src="https://images.pexels.com/photos/3661343/pexels-photo-3661343.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Art"></div></div>
+        <div class="col-md-4"><div class="gallery-card"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop" alt="Play"></div></div>
+        <div class="col-md-4"><div class="gallery-card"><img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&h=400&fit=crop" alt="Group"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARENT RESOURCES SECTION (PDF Downloads) -->
+  <section id="resources" class="section">
+    <div class="container">
+      <h2 class="title">📚 Parent Resources</h2>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="download-card">
+            <i class="fas fa-file-alt download-icon"></i>
+            <h4>Kids Progress Report</h4>
+            <p>Monthly development report</p>
+            <input type="text" id="studentReportNum" class="student-input" placeholder="Student Number (6 digits)" maxlength="6">
+            <button class="btn-kids btn-red" style="padding:8px 15px; font-size:0.9rem;" onclick="downloadRestrictedPDF('report')">Download PDF</button>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop" alt="Outdoor play">
+        <div class="col-md-3 col-sm-6">
+          <div class="download-card">
+            <i class="fas fa-calendar-alt download-icon"></i>
+            <h4>Year Plan 2026</h4>
+            <p>Full academic calendar</p>
+            <input type="text" id="studentYearNum" class="student-input" placeholder="Student Number (6 digits)" maxlength="6">
+            <button class="btn-kids btn-blue" style="padding:8px 15px; font-size:0.9rem;" onclick="downloadRestrictedPDF('yearplan')">Download PDF</button>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&h=600&fit=crop" alt="Group fun">
+        <div class="col-md-3 col-sm-6">
+          <div class="download-card">
+            <i class="fas fa-pencil-ruler download-icon"></i>
+            <h4>Stationery List</h4>
+            <p>Required supplies by age</p>
+            <button class="btn-kids btn-green" style="margin-top:15px; padding:8px 15px;" onclick="downloadOpenPDF('stationery')">Download PDF</button>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="download-card">
+            <i class="fas fa-clipboard-list download-icon"></i>
+            <h4>Enrollment Requirements</h4>
+            <p>Documents & steps</p>
+            <button class="btn-kids btn-purple" style="margin-top:15px; padding:8px 15px; background:var(--kid-purple); color:white;" onclick="downloadOpenPDF('enrollment')">Download PDF</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REGISTER SECTION -->
+  <!-- REGISTRATION FORM -->
   <section id="register" class="section">
     <div class="container">
       <h2 class="title">📝 Register Your Child</h2>
@@ -696,180 +495,158 @@
         <div class="col-md-6 col-md-offset-3">
           <div class="form-container">
             <form id="registrationForm">
-              <div class="form-group">
-                <label><i class="fas fa-user"></i> Child's Full Name</label>
-                <input type="text" class="form-control input-lg" placeholder="e.g. Lily Jacobs" required>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-envelope"></i> Parent Email</label>
-                <input type="email" class="form-control input-lg" placeholder="hello@family.com" required>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-phone-alt"></i> Contact Number</label>
-                <input type="tel" class="form-control input-lg" placeholder="+27 82 123 4567" required>
-              </div>
-              <div class="form-group">
-                <label><i class="fas fa-cloud-upload-alt"></i> Upload Proof of Payment / Receipt</label>
-                <input type="file" class="form-control" style="border: 2px dashed var(--kid-blue); padding: 8px;" required>
-              </div>
-              <div class="bank-details">
-                <i class="fas fa-university"></i> <strong>Bank Transfer Details</strong><br>
-                <small>Bank: FNB | Acc: 62687046097 | Branch: 250655 | Ref: ChildName_ECD</small>
-              </div>
-              <br>
-              <button type="submit" class="btn btn-kids btn-red btn-block btn-lg">✅ Submit Application</button>
+              <div class="form-group"><label>🧸 Child's Full Name</label><input type="text" class="form-control" id="childName" required></div>
+              <div class="form-group"><label>📧 Parent Email</label><input type="email" class="form-control" id="parentEmail" required></div>
+              <div class="form-group"><label>📞 Phone Number</label><input type="tel" class="form-control" id="phoneNum" required></div>
+              <div class="form-group"><label>💳 Upload Payment Receipt</label><input type="file" class="form-control" id="receiptFile" required style="border:2px dashed var(--kid-blue);"></div>
+              <div class="bank-details"><i class="fas fa-university"></i> <strong>Bank Details</strong><br>FNB | Acc: 62687046097 | Branch: 250655 | Ref: ChildName_ECD</div>
+              <br><button type="submit" class="btn-kids btn-red btn-block">✅ Submit Application</button>
             </form>
+            <div id="formFeedback" class="text-center mt-3 fw-bold"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER with cartoon image -->
   <footer id="contact">
     <svg class="park-svg" viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <linearGradient id="skyGradFooter" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#F9D56E" />
-          <stop offset="100%" stop-color="#A3DDED" />
-        </linearGradient>
-      </defs>
+      <defs><linearGradient id="skyGradFooter" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#F9D56E" /><stop offset="100%" stop-color="#A3DDED" /></linearGradient></defs>
       <rect fill="url(#skyGradFooter)" width="1440" height="480"/>
       <circle cx="1300" cy="70" r="55" fill="#FFB347"/>
-      <g fill="#FFE084" opacity="0.5"><circle cx="1300" cy="70" r="75" /></g>
-      <g fill="#FFFFFFE6">
-        <ellipse cx="220" cy="55" rx="75" ry="40"/>
-        <ellipse cx="300" cy="70" rx="55" ry="32"/>
-        <ellipse cx="1150" cy="85" rx="85" ry="42"/>
-      </g>
+      <g fill="white" opacity="0.8"><ellipse cx="220" cy="55" rx="75" ry="40"/><ellipse cx="1150" cy="85" rx="85" ry="42"/></g>
       <path d="M0,300 L0,380 Q300,230 620,340 T1140,280 L1440,260 L1440,480 L0,480 Z" fill="#6BCB77"/>
       <path d="M0,340 L0,420 Q280,280 590,380 T1220,340 L1440,320 L1440,480 L0,480 Z" fill="#4CAF50"/>
-      <g transform="translate(100, 240)">
-        <rect x="22" y="65" width="26" height="85" fill="#8B5A2B"/>
-        <circle cx="35" cy="40" r="50" fill="#2E7D32"/>
-      </g>
-      <g transform="translate(1250, 220)">
-        <rect x="18" y="70" width="28" height="95" fill="#A5673F"/>
-        <circle cx="32" cy="40" r="55" fill="#1B5E20"/>
-      </g>
-      <g transform="translate(500, 260)">
-        <rect x="0" y="0" width="190" height="10" fill="#BD9A7A" rx="5"/>
-        <line x1="25" y1="10" x2="25" y2="150" stroke="#5D4037" stroke-width="8"/>
-        <line x1="165" y1="10" x2="165" y2="150" stroke="#5D4037" stroke-width="8"/>
-        <rect x="80" y="135" width="30" height="12" fill="#FF6B6B" rx="6"/>
-      </g>
-      <g transform="translate(950, 200)">
-        <rect x="8" y="0" width="14" height="170" fill="#FF9F4A"/>
-        <rect x="75" y="0" width="14" height="170" fill="#FF9F4A"/>
-        <path d="M82,155 L82,168 L210,240 L210,215 Z" fill="#E76F51"/>
-      </g>
-      <polygon points="900,120 940,80 980,120 940,200" fill="#FFB7B2" opacity="0.8"/>
+      <g transform="translate(100, 240)"><rect x="22" y="65" width="26" height="85" fill="#8B5A2B"/><circle cx="35" cy="40" r="50" fill="#2E7D32"/></g>
+      <g transform="translate(500, 260)"><rect x="0" y="0" width="190" height="10" fill="#BD9A7A"/><line x1="25" y1="10" x2="25" y2="150" stroke="#5D4037" stroke-width="8"/><line x1="165" y1="10" x2="165" y2="150" stroke="#5D4037" stroke-width="8"/><rect x="80" y="135" width="30" height="12" fill="#FF6B6B"/></g>
+      <g transform="translate(950, 200)"><rect x="8" y="0" width="14" height="170" fill="#FF9F4A"/><rect x="75" y="0" width="14" height="170" fill="#FF9F4A"/><path d="M82,155 L82,168 L210,240 L210,215 Z" fill="#E76F51"/></g>
     </svg>
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995572.png" alt="Cartoon Elephant" class="footer-cartoon">
     <div class="footer-content">
       <h3><i class="fas fa-heart"></i> Motivation for Life ECD</h3>
-      <p>Building Future Leaders with Love, Play & Purpose ❤️ | © 2025</p>
-      <p><i class="fas fa-map-marker-alt"></i> 123 Sunshine Blvd, Cape Town | <i class="fas fa-phone"></i> +27 82 765 4321</p>
+      <p>Building Future Leaders with Love, Play & Purpose ❤️ | © 2026</p>
+      <p><i class="fas fa-map-marker-alt"></i> Winterveld, via Paving Road, Pretoria | <i class="fas fa-phone"></i> +27 81 234 5678</p>
+      <p><i class="fas fa-envelope"></i> motivationforlife581@gmail.com</p>
     </div>
   </footer>
 
-  <!-- jQuery & Bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script>
-    $(document).ready(function() {
-      // ===== INFINITE LOOP TYPEWRITER =====
-      const wordsArray = [
-        { text: "PARENTS", color: "#FF6B6B" },
-        { text: "WELCOME", color: "#4D96FF" },
-        { text: "TO", color: "#FFD93D" },
-        { text: "MOTIVATION", color: "#6BCB77" },
-        { text: "FOR", color: "#C5A3FF" },
-        { text: "LIFE", color: "#FF6B6B" },
-        { text: "ECD", color: "#4D96FF" }
-      ];
-      
-      let $container = $('#typewriter');
-      let fullCharMap = [];
-      wordsArray.forEach((word, idx) => {
-        for (let c of word.text) {
-          fullCharMap.push({ char: c, color: word.color });
-        }
-        if (idx !== wordsArray.length - 1) {
-          fullCharMap.push({ char: ' ', color: '#333' });
-        }
-      });
-
-      let currentLength = 0;
-      let typingTimeout = null;
-      let loopActive = true;
-
-      function updateDisplay() {
-        $container.empty();
-        for (let i = 0; i < currentLength; i++) {
-          let item = fullCharMap[i];
-          let $span = $('<span>').css('color', item.color).text(item.char);
-          $container.append($span);
-        }
+    // TYPEWRITER
+    const wordsArray = [
+      { text: "PARENTS", color: "#FF6B6B" }, { text: "WELCOME", color: "#4D96FF" },
+      { text: "TO", color: "#FFD93D" }, { text: "MOTIVATION", color: "#6BCB77" },
+      { text: "FOR", color: "#C5A3FF" }, { text: "LIFE", color: "#FF6B6B" }, { text: "ECD", color: "#4D96FF" }
+    ];
+    let $container = $('#typewriter');
+    let fullCharMap = [];
+    wordsArray.forEach((word, idx) => {
+      for (let c of word.text) fullCharMap.push({ char: c, color: word.color });
+      if (idx !== wordsArray.length - 1) fullCharMap.push({ char: ' ', color: '#333' });
+    });
+    let currentLength = 0, typingTimeout;
+    function updateDisplay() {
+      $container.empty();
+      for (let i = 0; i < currentLength; i++) {
+        $('<span>').css('color', fullCharMap[i].color).text(fullCharMap[i].char).appendTo($container);
       }
+    }
+    function typeNext() {
+      if (currentLength < fullCharMap.length) { currentLength++; updateDisplay(); typingTimeout = setTimeout(typeNext, 70); }
+      else { typingTimeout = setTimeout(startDelete, 1800); }
+    }
+    function startDelete() {
+      if (currentLength > 0) { currentLength--; updateDisplay(); typingTimeout = setTimeout(startDelete, 45); }
+      else { typingTimeout = setTimeout(() => { typeNext(); }, 300); }
+    }
+    setTimeout(typeNext, 400);
 
-      function typeNext() {
-        if (!loopActive) return;
-        if (currentLength < fullCharMap.length) {
-          currentLength++;
-          updateDisplay();
-          typingTimeout = setTimeout(typeNext, 70);
-        } else {
-          typingTimeout = setTimeout(startDelete, 1800);
-        }
+    // ANIME.JS HEADER ANIMATION
+    anime({
+      targets: '.hero-text',
+      translateY: [20, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      easing: 'easeOutElastic'
+    });
+    anime({
+      targets: '.floating',
+      rotate: [0, 360],
+      duration: 20000,
+      loop: true,
+      easing: 'linear'
+    });
+
+    // PDF GENERATION
+    function generatePDF(title, content, filename) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFont("helvetica");
+      doc.setFontSize(16);
+      doc.text(title, 20, 20);
+      doc.setFontSize(11);
+      let y = 35;
+      const lines = content.split('\n');
+      for (let line of lines) {
+        if (y > 280) { doc.addPage(); y = 20; }
+        doc.text(line, 20, y);
+        y += 6;
       }
+      doc.save(filename);
+    }
 
-      function startDelete() {
-        if (!loopActive) return;
-        if (currentLength > 0) {
-          currentLength--;
-          updateDisplay();
-          typingTimeout = setTimeout(startDelete, 45);
-        } else {
-          typingTimeout = setTimeout(() => { typeNext(); }, 300);
-        }
+    function downloadRestrictedPDF(type) {
+      let studentNum = type === 'report' ? document.getElementById('studentReportNum').value.trim() : document.getElementById('studentYearNum').value.trim();
+      if (!studentNum) { alert("⚠️ Please enter a valid 6-digit student number."); return; }
+      if (!/^\d{6}$/.test(studentNum)) { alert("⚠️ Student number must be exactly 6 digits."); return; }
+      let title, content, filename;
+      if (type === 'report') {
+        title = "Kids Progress Report"; filename = `Progress_Report_${studentNum}.pdf`;
+        content = `MOTIVATION FOR LIFE ECD - PROGRESS REPORT\nStudent ID: ${studentNum}\nDate: ${new Date().toLocaleDateString()}\n\n--- DEVELOPMENTAL MILESTONES ---\nSocial Skills: ⭐⭐⭐⭐☆\n- Plays cooperatively with peers\nCognitive: ⭐⭐⭐⭐⭐\n- Recognizes colors & shapes\nLanguage: ⭐⭐⭐⭐☆\n- Speaks in sentences\nPhysical: ⭐⭐⭐⭐☆\n- Fine & gross motor skills\nTeacher's Comments: Excellent progress!\n© Motivation for Life ECD`;
+      } else {
+        title = "Year Plan 2026"; filename = `Year_Plan_${studentNum}.pdf`;
+        content = `MOTIVATION FOR LIFE ECD - YEAR PLAN 2026\n\nTERM 1: Jan-Mar (Welcome, Parent Workshop)\nTERM 2: Apr-Jun (Little Leaders Gala, Carnival)\nTERM 3: Jul-Sep (Entrepreneurs Day, Sports Day)\nTERM 4: Oct-Dec (Graduation, Year End Ceremony)\n\nSpecial events every month.\n© Motivation for Life ECD`;
       }
+      generatePDF(title, content, filename);
+      alert(`✅ ${filename} downloaded!`);
+    }
 
-      setTimeout(() => { typeNext(); }, 400);
-      
-      // ===== FORM SUBMISSION =====
-      $('#registrationForm').on('submit', function(e) {
-        e.preventDefault();
-        let childName = $(this).find('input[placeholder*="Child"]').val() || "little star";
-        const $notify = $('<div>').css({
-          position: 'fixed',
-          bottom: '30px',
-          right: '25px',
-          background: 'linear-gradient(125deg, #6BCB77, #4D96FF)',
-          color: 'white',
-          padding: '14px 28px',
-          borderRadius: '50px',
-          fontWeight: 'bold',
-          zIndex: 9999,
-          boxShadow: '0 15px 25px rgba(0,0,0,0.2)',
-          fontFamily: 'Fredoka',
-          fontSize: '1.1rem'
-        }).html(`<i class="fas fa-check-circle"></i> 🎉 ${childName} enrolled! We'll contact you soon.`);
-        $('body').append($notify);
-        setTimeout(() => $notify.fadeOut(600, function(){ $(this).remove(); }), 3500);
-        this.reset();
-      });
-      
-      // Smooth scroll for anchors
-      $('a[href*="#"]:not([href="#"])').click(function(e) {
-        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-          let target = $(this.hash);
-          if (target.length) {
-            e.preventDefault();
-            $('html, body').animate({ scrollTop: target.offset().top - 70 }, 700, 'swing');
-          }
-        }
-      });
+    function downloadOpenPDF(type) {
+      let title, content, filename;
+      if (type === 'stationery') {
+        title = "Stationery List 2026"; filename = "Stationery_List.pdf";
+        content = `MOTIVATION FOR LIFE ECD - STATIONERY LIST\n\n0-2y: 2 notebooks, crayons, play dough, wipes, water bottle (R300)\n2-3y: 3 books, crayons, pencils, paint, play dough (R300)\n3-4y: 4 books, 2 hard covers, 24 crayons, pencils, scissors, glue, paint (R450)\nGrade R: 5 books, 2 hard covers, pencil case, HB pencils, eraser, ruler, 24 crayons, pencils, felt pens, scissors, glue, paint, water bottle (R450)\nAll items labeled.`;
+      } else {
+        title = "Enrollment Requirements"; filename = "Enrollment_Requirements.pdf";
+        content = `MOTIVATION FOR LIFE ECD - ENROLLMENT\n\nDocuments: Birth certificate, immunization record, parent ID, proof of address, photos, medical aid.\nFees: Registration R250, Re-registration R150, Student Card R250.\nTuition: 0-2y R800, 2-3y R700, 3-4y R600, Grade R R800 + stationery.\nBank: FNB Acc 62687046097.\nSteps: Fill form, upload receipt, submit docs, visit, confirmation.\nContact: motivationforlife581@gmail.com`;
+      }
+      generatePDF(title, content, filename);
+      alert(`✅ ${filename} downloaded!`);
+    }
+
+    // FORM SUBMISSION
+    $('#registrationForm').on('submit', function(e) {
+      e.preventDefault();
+      const child = $('#childName').val().trim();
+      const email = $('#parentEmail').val().trim();
+      const phone = $('#phoneNum').val().trim();
+      const file = $('#receiptFile')[0].files[0];
+      if (!child || !email || !phone) { $('#formFeedback').html("⚠️ Please fill all fields.").css('color','red'); return; }
+      if (!file) { $('#formFeedback').html("📎 Please upload receipt.").css('color','red'); return; }
+      $('#formFeedback').html(`✅ Thank you ${child}! We'll contact you at ${email}.`).css('color','green');
+      setTimeout(() => $('#formFeedback').html(''), 4000);
+      this.reset();
+    });
+
+    // Smooth scroll
+    $('a[href*="#"]:not([href="#"])').click(function(e) {
+      if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+        let target = $(this.hash);
+        if (target.length) { e.preventDefault(); $('html, body').animate({ scrollTop: target.offset().top - 70 }, 700); }
+      }
     });
   </script>
 </body>
